@@ -67,7 +67,7 @@ Développement d'une chaîne décisionnelle complète sous KNIME : intégration 
 
 | Flux ETL complet | Détail nœuds de transformation |
 |---|---|
-| ![KNIME 1](Capture d’écran 2026-01-16 à 10.41.06.png) | ![KNIME 2](Capture d’écran 2026-01-16 à 11.07.38.png) |
+| ![KNIME 1](flow1.png) | ![KNIME 2](flow2.png) |
 
 ---
 
@@ -76,7 +76,7 @@ Développement d'un site PHP/MySQL analysant les ventes hebdomadaires Walmart. B
 
 | Page d'accueil | Tableau de bord ventes | Vue détaillée magasin |
 |---|---|---|
-| ![Site 1](Capture d’écran 2026-04-09 à 11.18.21.png) | ![Site 2](Capture d’écran 2026-04-09 à 11.18.29.png) | ![Site 3](Capture d’écran 2026-04-09 à 11.18.43.png) | ![Site 4](Capture d’écran 2026-04-09 à 11.19.07.png) 
+| ![Site 1](site1.png) | ![Site 2](site2.png) | ![Site 3](site3.png) | ![Site 4](site4.png) 
 
 ---
 
@@ -96,20 +96,20 @@ Collaboration internationale en anglais à l'Université d'Économie de Prague. 
 ### 🧩 Scraping & Catalogue web – API Rebrickable (Python)
 Extraction automatisée via l'API REST Rebrickable (25 000+ sets Lego). Génération d'un catalogue HTML interactif filtrable par thème et année, avec redirection vers les fiches produits. Architecture modulaire en 3 fichiers Python.
 
-![Catalogue Lego](Capture d’écran 2026-04-09 à 11.24.58.png)
+![Catalogue Lego](bugatti.png)
 ---
 
 ### 📈 Analyse de données & Application interactive – R Shiny
 Analyse d'une enquête de 4 000 répondants (UGA) sur l'usage des outils d'IA générative. Nettoyage, ACM et CAH sous R/FactoMineR, segmentation en 4 profils, restitution via une application R Shiny interactive.
 
-![App R Shiny](Capture d’écran 2026-04-09 à 11.33.25.png)
+![App R Shiny](AppR.png)
 
 ---
 
 ### 🗺️ BI & SIG – Inventaire de signalisation UGA (ArcGIS)
 Inventaire terrain des traversées de tramway sur le campus UGA pour la DGD PAT. Collecte via Survey123, calcul de coûts via Arcade/SQL, livraison d'un Dashboard et d'une StoryMap ArcGIS pour un client réel.
 
-![Formulaire Survey123](Capture d’écran 2026-04-09 à 11.31.22.png)
+![Formulaire Survey123](survey123.png)
 
 ---
 
