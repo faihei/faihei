@@ -127,6 +127,26 @@
       footer { padding: 1.2rem 1.5rem; flex-direction: column; gap: 0.3rem; }
     }
     .pcard-img-sm { width:100%; height:140px; overflow:hidden; margin-bottom:0.8rem; } .pcard-img-sm img { width:100%; height:100%; object-fit:cover; }
+
+    /* MODAL */
+    .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:1000; align-items:center; justify-content:center; padding:2rem; }
+    .modal-overlay.open { display:flex; }
+    .modal-box { background:#fff; max-width:820px; width:100%; max-height:88vh; overflow-y:auto; border:1px solid var(--border); position:relative; }
+    .modal-close { position:sticky; top:0; float:right; background:var(--bg); border:none; font-size:1.3rem; cursor:pointer; padding:0.6rem 1rem; color:var(--muted); z-index:10; }
+    .modal-close:hover { color:var(--text); }
+    .modal-header { padding:1.8rem 2rem 0; }
+    .modal-header .ptags { margin-bottom:0.8rem; }
+    .modal-header h2 { font-family:var(--serif); font-size:1.8rem; letter-spacing:-0.02em; margin-bottom:0.8rem; }
+    .modal-header p { color:var(--muted); font-size:0.92rem; line-height:1.75; }
+    .modal-imgs { display:grid; gap:0.8rem; padding:1.5rem 2rem; }
+    .modal-imgs.cols2 { grid-template-columns:1fr 1fr; }
+    .modal-imgs.cols3 { grid-template-columns:1fr 1fr 1fr; }
+    .modal-imgs.cols1 { grid-template-columns:1fr; }
+    .modal-imgs img { width:100%; height:auto; border:1px solid var(--border); display:block; }
+    .modal-section { padding:0 2rem 1.5rem; }
+    .modal-section h4 { font-size:0.72rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:0.6rem; }
+    .modal-section p { color:var(--muted); font-size:0.88rem; line-height:1.75; }
+    .pcard { cursor:pointer; }
   </style>
 </head>
 <body>
@@ -234,88 +254,244 @@
   <span class="s-label">Projets</span>
   <h2 class="s-title">Mes réalisations</h2>
   <div class="proj-main" style="grid-template-columns: 1fr 1fr; margin-top: 3rem;">
-    <div class="pcard fade">
-      <div class="pcard-img" style="height:240px">
-        <img src="Dashboard_HR_1.png" alt="Power BI RH">
-      </div>
+
+    <div class="pcard fade" onclick="document.getElementById('modal-powerbi').classList.add('open')">
+      <div class="pcard-img" style="height:240px"><img src="Dashboard_HR_1.png" alt="Power BI RH"></div>
       <div class="pcard-body">
         <div class="ptags"><span class="ptag">Power BI</span><span class="ptag">DAX</span></div>
         <h3 class="ptitle">Tableaux de bord RH</h3>
         <p class="pdesc">Dashboards interactifs multi-pages : effectifs, répartition géographique, pyramide des âges, masse salariale. Modélisation des données et mesures DAX.</p>
       </div>
     </div>
-    <div class="pcard fade">
-      <div class="pcard-img" style="height:240px">
-        <img src="flow2.png" alt="KNIME ETL">
-      </div>
+
+    <div class="pcard fade" onclick="document.getElementById('modal-knime').classList.add('open')">
+      <div class="pcard-img" style="height:240px"><img src="flow2.png" alt="KNIME ETL"></div>
       <div class="pcard-body">
         <div class="ptags"><span class="ptag">KNIME</span><span class="ptag">MySQL</span><span class="ptag">ETL</span></div>
         <h3 class="ptitle">Chaîne décisionnelle ETL</h3>
-        <p class="pdesc">Intégration de données hétérogènes (CSV, Excel, XML) dans un data warehouse MySQL. Architecture en étoile, nettoyage et transformation automatisés. Majorant à l'examen écrit.</p>
+        <p class="pdesc">Intégration de données hétérogènes (CSV, Excel, XML) dans un data warehouse MySQL. Architecture en étoile, nettoyage et transformation automatisés.</p>
       </div>
     </div>
-    <div class="pcard fade">
-      <div class="pcard-img" style="height:240px">
-        <img src="site1.png" alt="Walmart">
-      </div>
+
+    <div class="pcard fade" onclick="document.getElementById('modal-walmart').classList.add('open')">
+      <div class="pcard-img" style="height:240px"><img src="site1.png" alt="Walmart"></div>
       <div class="pcard-body">
         <div class="ptags"><span class="ptag">PHP</span><span class="ptag">MySQL</span><span class="ptag">Chart.js</span></div>
         <h3 class="ptitle">Analyse de ventes Walmart</h3>
         <p class="pdesc">Mini-site PHP/MySQL analysant les ventes hebdomadaires. Base en étoile, requêtes dynamiques, visualisations avec coloration saisonnière et KPIs.</p>
       </div>
     </div>
-    <div class="pcard fade">
-      <div class="pcard-img" style="height:240px">
-        <img src="IMG_0086.jpeg" alt="Prague">
-      </div>
+
+    <div class="pcard fade" onclick="document.getElementById('modal-prague').classList.add('open')">
+      <div class="pcard-img" style="height:240px"><img src="IMG_0086.jpeg" alt="Prague"></div>
       <div class="pcard-body">
         <div class="ptags"><span class="ptag">Power BI</span><span class="ptag">Anglais</span><span class="ptag">International</span></div>
         <h3 class="ptitle">BIP Prague – Data-Driven Decision Making</h3>
-        <p class="pdesc">Sélectionné parmi 10 étudiants pour collaborer avec des Slovènes à l'Université d'Économie de Prague en avril 2026. Simulation business, modélisation analytique et dashboards en anglais.</p>
+        <p class="pdesc">Collaboration internationale à l'Université d'Économie de Prague. Simulation business data-driven en anglais avec des étudiants européens.</p>
       </div>
     </div>
-    <div class="pcard fade">
-      <div class="pcard-img" style="height:240px">
-        <img src="bugatti.png" alt="Catalogue Lego">
-      </div>
-      <div class="pcard-body">
-        <div class="ptags"><span class="ptag">Python</span><span class="ptag">API REST</span></div>
-        <h3 class="ptitle">Catalogue Lego</h3>
-        <p class="pdesc">Extraction automatisée via l'API Rebrickable et génération d'un catalogue HTML interactif filtrable par thème et année.</p>
-      </div>
-    </div>
-    <div class="pcard fade">
-      <div class="pcard-img" style="height:240px">
-        <img src="AppR.png" alt="App R Shiny">
-      </div>
+
+    <div class="pcard fade" onclick="document.getElementById('modal-shiny').classList.add('open')">
+      <div class="pcard-img" style="height:240px"><img src="AppR.png" alt="App R Shiny"></div>
       <div class="pcard-body">
         <div class="ptags"><span class="ptag">R</span><span class="ptag">Shiny</span><span class="ptag">ACM / CAH</span></div>
         <h3 class="ptitle">App interactive R Shiny</h3>
         <p class="pdesc">Analyse d'une enquête de 4 000 répondants sur l'usage des IAG à l'UGA. Segmentation en 4 profils via ACM et CAH, restitution via application interactive.</p>
       </div>
     </div>
-    <div class="pcard fade">
-      <div class="pcard-img" style="height:240px">
-        <img src="survey123.png" alt="Inventaire UGA">
-      </div>
+
+    <div class="pcard fade" onclick="document.getElementById('modal-arcgis').classList.add('open')">
+      <div class="pcard-img" style="height:240px"><img src="survey123.png" alt="Inventaire UGA"></div>
       <div class="pcard-body">
         <div class="ptags"><span class="ptag">ArcGIS</span><span class="ptag">Survey123</span></div>
         <h3 class="ptitle">Inventaire signalisation UGA</h3>
         <p class="pdesc">Inventaire terrain des traversées de tramway sur le campus UGA. Dashboard et StoryMap ArcGIS livrés à un client réel (DGD PAT).</p>
       </div>
     </div>
-    <div class="pcard fade">
-      <div class="pcard-img" style="height:240px">
-        <img src="RF-DARES_RVB.png" alt="DARES">
+
+    <div class="pcard fade" onclick="document.getElementById('modal-lego').classList.add('open')">
+      <div class="pcard-img" style="height:240px"><img src="bugatti.png" alt="Catalogue Lego"></div>
+      <div class="pcard-body">
+        <div class="ptags"><span class="ptag">Python</span><span class="ptag">API REST</span></div>
+        <h3 class="ptitle">Catalogue Lego</h3>
+        <p class="pdesc">Extraction automatisée via l'API Rebrickable et génération d'un catalogue HTML interactif filtrable par thème et année.</p>
       </div>
+    </div>
+
+    <div class="pcard fade" onclick="document.getElementById('modal-dares').classList.add('open')">
+      <div class="pcard-img" style="height:240px"><img src="RF-DARES_RVB.png" alt="DARES"></div>
       <div class="pcard-body">
         <div class="ptags"><span class="ptag">R</span><span class="ptag">Tableau</span><span class="ptag">Statistiques</span></div>
         <h3 class="ptitle">Étude statistique DARES</h3>
         <p class="pdesc">Analyse statistique de la syndicalisation dans le secteur médico-social. Nettoyage, visualisations RStudio et Tableau, présentation orale des résultats.</p>
       </div>
     </div>
+
   </div>
 </section>
+
+<!-- MODALS -->
+
+<div class="modal-overlay" id="modal-powerbi" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('modal-powerbi').classList.remove('open')">✕</button>
+    <div class="modal-header">
+      <div class="ptags"><span class="ptag">Power BI</span><span class="ptag">DAX</span><span class="ptag">Modélisation</span></div>
+      <h2>Tableaux de bord RH</h2>
+      <p>Conception d'un rapport Power BI multi-pages sur un jeu de données RH fictif d'une entreprise internationale. L'objectif était de permettre à la direction d'analyser les effectifs, les salaires, la pyramide des âges et la répartition géographique via des visualisations interactives.</p>
+    </div>
+    <div class="modal-imgs cols2">
+      <img src="Dashboard_HR_1.png" alt="Vue salaires">
+      <img src="Dashboard_HR_2.png" alt="Vue employés">
+      <img src="Dashboard_HR_3.png" alt="Vue comparaison">
+      <img src="Dashboard_HR_4.png" alt="TOP 5">
+    </div>
+    <div class="modal-section">
+      <h4>Ce qui a été fait</h4>
+      <p>Modélisation des données en étoile, création de mesures DAX (salaire moyen, masse salariale, écarts à la moyenne), mise en place de 5 pages thématiques avec navigation par boutons, filtres croisés et indicateurs de performance. La page "Employé dans la moyenne" permet de comparer chaque salarié aux moyennes de sa tranche d'ancienneté.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-knime" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('modal-knime').classList.remove('open')">✕</button>
+    <div class="modal-header">
+      <div class="ptags"><span class="ptag">KNIME</span><span class="ptag">MySQL</span><span class="ptag">ETL</span><span class="ptag">Data Warehouse</span></div>
+      <h2>Chaîne décisionnelle ETL</h2>
+      <p>Construction d'une chaîne ETL complète sous KNIME pour intégrer des données de transport scolaire issues de trois sources hétérogènes (CSV, Excel, XML) dans un data warehouse MySQL. Modélisation en schéma étoile avec une table de faits ROUTE et trois dimensions : Ligne, Bus, Date.</p>
+    </div>
+    <div class="modal-imgs cols2">
+      <img src="flow1.png" alt="Flux XML">
+      <img src="flow2.png" alt="Flux Excel/CSV">
+      <img src="starcheme.png" alt="Schéma étoile">
+    </div>
+    <div class="modal-section">
+      <h4>Ce qui a été fait</h4>
+      <p>Traitement des fichiers XML via XPath, nettoyage des identifiants (BUS_01 → 1, LIGNE_09 → 9), normalisation des types, fusion de trois flux distincts, calcul des km parcourus et chargement en base MySQL. Le schéma étoile inclut une dimension Date décomposée en année, mois, semaine et jour. Majorant à l'examen écrit.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-walmart" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('modal-walmart').classList.remove('open')">✕</button>
+    <div class="modal-header">
+      <div class="ptags"><span class="ptag">PHP</span><span class="ptag">MySQL</span><span class="ptag">Chart.js</span><span class="ptag">HTML/CSS</span></div>
+      <h2>Analyse de ventes Walmart</h2>
+      <p>Mini-site web d'analyse des ventes hebdomadaires de 45 magasins Walmart aux États-Unis (2010–2012), développé en PHP/MySQL avec visualisations dynamiques via Chart.js. Les données sont chargées en asynchrone (fetch/await) depuis la base MySQL.</p>
+    </div>
+    <div class="modal-imgs cols2">
+      <img src="site1.png" alt="Accueil">
+      <img src="site2.png" alt="Indicateurs">
+      <img src="site3.png" alt="Analyse">
+      <img src="site4.png" alt="Graphiques">
+    </div>
+    <div class="modal-section">
+      <h4>Ce qui a été fait</h4>
+      <p>Modélisation en schéma étoile (faits_ventes, dim_magasin, dim_temps), import de 6 435 lignes, requêtes SQL dynamiques avec filtres, pages Indicateurs (top 10 magasins, ventes par saison), Analyse (filtres magasin/année/saison), et Graphiques (ventes par mois, région, semaines fériées vs normales).</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-prague" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('modal-prague').classList.remove('open')">✕</button>
+    <div class="modal-header">
+      <div class="ptags"><span class="ptag">Power BI</span><span class="ptag">Anglais</span><span class="ptag">International</span><span class="ptag">Business Simulation</span></div>
+      <h2>BIP Prague – Data-Driven Decision Making</h2>
+      <p>Programme bilatéral intensif à l'Université d'Économie de Prague (VŠE) en avril 2026. Une semaine de travail en anglais avec des étudiants européens autour de la prise de décision data-driven dans un contexte business incertain.</p>
+    </div>
+    <div class="modal-imgs cols2">
+      <img src="adgame1.png" alt="AdGame interface">
+      <img src="adgame2.png" alt="AdGame résultats">
+    </div>
+    <div class="modal-section">
+      <h4>AdGame – La simulation</h4>
+      <p>Simulation en 11 rounds sur AdGame : chaque équipe devait créer des plats à vendre et lancer des campagnes publicitaires ciblées par quartiers de Prague et par type de média (arrêts de bus, panneaux dans la rue, bus, humains...). À chaque round, les données des meilleurs produits (caractéristiques, prix, équipe vendeuse) étaient disponibles pour ajuster la stratégie.</p>
+    </div>
+    <div class="modal-section">
+      <h4>Notre parcours</h4>
+      <p>Notre équipe a terminé 4e sur 5. Mais à partir du round 8, après un démarrage difficile (20% en dessous de la moyenne), nous avons dépassé l'équipe 5 de plus de 50% de leur chiffre d'affaires — en analysant les données disponibles pour repositionner nos produits et mieux cibler nos campagnes. Un réveil tardif, mais démonstratif du pouvoir de la donnée dans la décision.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-shiny" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('modal-shiny').classList.remove('open')">✕</button>
+    <div class="modal-header">
+      <div class="ptags"><span class="ptag">R</span><span class="ptag">Shiny</span><span class="ptag">FactoMineR</span><span class="ptag">ACM</span><span class="ptag">CAH</span></div>
+      <h2>App interactive R Shiny – IAG UGA</h2>
+      <p>Analyse d'une enquête conduite à l'Université Grenoble Alpes auprès de 3 092 étudiants sur leurs habitudes de travail et leur usage des outils d'IA générative. Deux thèmes analytiques traités : organisation du travail et usage des IAG.</p>
+    </div>
+    <div class="modal-imgs cols2">
+      <img src="app1.png" alt="Vue d'ensemble">
+      <img src="app3.png" alt="ACM">
+      <img src="app4.png" alt="Thème travail">
+    </div>
+    <div class="modal-section">
+      <h4>Ce qui a été fait</h4>
+      <p>Pipeline complet sous R : nettoyage, analyse ACM via FactoMineR, classification hiérarchique ascendante (méthode de Ward, K=4 clusters), interprétation des profils via catdes. Restitution via une application Shiny thème sombre avec filtres, graphiques interactifs et navigation multi-pages. Projet réalisé en équipe (Urisen, Moussa, Ranim).</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-arcgis" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('modal-arcgis').classList.remove('open')">✕</button>
+    <div class="modal-header">
+      <div class="ptags"><span class="ptag">ArcGIS</span><span class="ptag">Survey123</span><span class="ptag">Dashboard</span><span class="ptag">StoryMap</span></div>
+      <h2>Inventaire signalisation UGA</h2>
+      <p>Projet réalisé pour un client réel — la DGD PAT de l'Université Grenoble Alpes. Inventaire de la signalisation aux traversées de tramway sur le campus : panneaux Attention Tram, panneaux C20C et bandes d'éveil.</p>
+    </div>
+    <div class="modal-imgs cols2">
+      <img src="arcgis.png" alt="Architecture projet">
+      <img src="survey1.png" alt="Formulaire Survey123">
+      <img src="survey2.png" alt="Localisation GPS">
+    </div>
+    <div class="modal-section">
+      <h4>Ce qui a été fait</h4>
+      <p>Conception d'un formulaire de collecte terrain sur ArcGIS Survey123 avec géolocalisation GPS, photos et état des équipements. Les données sont stockées dans ArcGIS Online et traitées via champs calculés (Arcade/SQL) pour estimer les coûts de remise en état. Livraison d'un Dashboard ArcGIS avec KPIs et cartes interactives, et d'une StoryMap de restitution pour le client.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-lego" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('modal-lego').classList.remove('open')">✕</button>
+    <div class="modal-header">
+      <div class="ptags"><span class="ptag">Python</span><span class="ptag">API REST</span><span class="ptag">HTML/CSS</span></div>
+      <h2>Catalogue Lego – API Rebrickable</h2>
+      <p>Collecte automatisée de données LEGO via l'API REST Rebrickable et génération d'un catalogue HTML interactif. Architecture modulaire en 3 fichiers Python : configuration, couche API, interface utilisateur.</p>
+    </div>
+    <div class="modal-imgs cols1">
+      <img src="bugatti.png" alt="Catalogue Lego">
+    </div>
+    <div class="modal-section">
+      <h4>Ce qui a été fait</h4>
+      <p>Requêtes HTTP authentifiées vers les endpoints /lego/themes et /lego/sets, gestion de la pagination, parsing JSON, génération de pages HTML avec CSS flexbox pour un rendu catalogue e-commerce. L'utilisateur peut filtrer par thème (15 disponibles) et par année, chaque carte redirigeant vers la fiche Rebrickable du set.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-dares" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('modal-dares').classList.remove('open')">✕</button>
+    <div class="modal-header">
+      <div class="ptags"><span class="ptag">R</span><span class="ptag">Tableau</span><span class="ptag">Statistiques</span></div>
+      <h2>Étude statistique – Syndicalisation DARES</h2>
+      <p>Analyse statistique d'un jeu de données issu de la DARES (Direction de l'Animation de la Recherche, des Études et des Statistiques) portant sur la syndicalisation dans le secteur médico-social.</p>
+    </div>
+    <div class="modal-imgs cols1">
+      <img src="RF-DARES_RVB.png" alt="DARES">
+    </div>
+    <div class="modal-section">
+      <h4>Ce qui a été fait</h4>
+      <p>Nettoyage et recodage des variables sous RStudio, statistiques descriptives univariées et bivariées, visualisations commentées (histogrammes, boîtes à moustaches, tableaux croisés). Restitution des résultats sous Tableau et présentation orale devant le groupe.</p>
+    </div>
+  </div>
+</div>
 
 <section id="experiences">
   <span class="s-label">Expériences</span>
