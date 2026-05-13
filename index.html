@@ -113,6 +113,25 @@
 
     footer { border-top: 1px solid var(--border); padding: 1.4rem 5rem; display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--muted); }
 
+    /* Language toggle */
+    .lang-toggle {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.38rem 0.75rem;
+      border: 1px solid var(--border);
+      background: transparent;
+      cursor: pointer;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
+    .lang-toggle .flag { font-size: 1rem; line-height: 1; }
+
     .fade { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .fade.in { opacity: 1; transform: none; }
 
@@ -163,12 +182,16 @@
 <nav>
   <a href="#hero" class="nav-logo">IF.</a>
   <ul class="nav-links">
-    <li><a href="#about">À propos</a></li>
-    <li><a href="#competences">Compétences</a></li>
-    <li><a href="#projets">Projets</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about" data-i18n="nav-about">À propos</a></li>
+    <li><a href="#competences" data-i18n="nav-skills">Compétences</a></li>
+    <li><a href="#projets" data-i18n="nav-projects">Projets</a></li>
+    <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
   </ul>
-  <div style="display:flex; gap:0.6rem;">
+  <div style="display:flex; gap:0.6rem; align-items:center;">
+    <button class="lang-toggle" id="lang-btn" onclick="toggleLang()">
+      <span class="flag" id="lang-flag">🇬🇧</span>
+      <span id="lang-label">EN</span>
+    </button>
     <a href="https://linkedin.com/in/ismael-faihe" target="_blank" class="nav-cv">LinkedIn ↗</a>
     <a href="CV_FAIHE_ALT.pdf" class="nav-cv" target="_blank">CV PDF ↗</a>
   </div>
@@ -176,16 +199,16 @@
 
 <section id="hero">
   <div class="hero-left fade in">
-    <div class="hero-tag">Data & Business Intelligence</div>
+    <div class="hero-tag" data-i18n="hero-tag">Data & Business Intelligence</div>
     <h1 class="hero-name">Ismaël<br><em>Faihe</em></h1>
-    <p class="hero-desc">Étudiant en BUT Science des Données à l'IUT2 de Grenoble. Je construis des pipelines de données et des outils décisionnels concrets, avec méthode et rigueur.</p>
+    <p class="hero-desc" data-i18n="hero-desc">Étudiant en BUT Science des Données à l'IUT2 de Grenoble. Je construis des pipelines de données et des outils décisionnels concrets, avec méthode et rigueur.</p>
     <div class="hero-cta">
-      <a href="#projets" class="btn-primary">Voir mes projets</a>
-      <a href="#contact" class="btn-ghost">Me contacter →</a>
+      <a href="#projets" class="btn-primary" data-i18n="hero-btn-projects">Voir mes projets</a>
+      <a href="#contact" class="btn-ghost" data-i18n="hero-btn-contact">Me contacter →</a>
     </div>
     <div class="hero-avail">
       <span class="dot"></span>
-      Stage · Avril – Juin 2026 &nbsp;·&nbsp; Alternance · Sept. 2026 – Août 2027
+      <span data-i18n="hero-avail">Stage · Avril – Juin 2026 &nbsp;·&nbsp; Alternance · Sept. 2026 – Août 2027</span>
     </div>
   </div>
   <div class="hero-right fade in">
@@ -198,29 +221,29 @@
 </section>
 
 <section id="about">
-  <span class="s-label">À propos</span>
-  <h2 class="s-title">Donner du sens<br>à la donnée</h2>
+  <span class="s-label" data-i18n="about-label">À propos</span>
+  <h2 class="s-title" data-i18n="about-title">Donner du sens<br>à la donnée</h2>
   <div class="about-grid">
     <div class="about-text fade">
-      <p>Je me destine au <strong>data engineering</strong> et souhaite évoluer dans un environnement international. En avril 2026, j'ai participé au <strong>BIP Prague</strong> (VŠE) : une semaine de travail en anglais focalisée sur la prise de décision avec des étudiants Slovènes en Tchéquie.</p>
-      <p>Je réalise actuellement un stage chez <strong>SEVEN</strong> (Casablanca, Maroc), où je participe à la construction d'un pipeline data de bout en bout — de l'ingestion jusqu'au dashboard KPIs — sur une stack moderne : dbt, Apache Spark, Power BI.</p>
-      <p>Enthousiaste et communicant, j'aime autant construire des pipelines de données que présenter des résultats à l'oral. Passionné de ski, musculation et voyages.</p>
+      <p data-i18n="about-p1">Je me destine au <strong>data engineering</strong> et souhaite évoluer dans un environnement international. En avril 2026, j'ai participé au <strong>BIP Prague</strong> (VŠE) : une semaine de travail en anglais focalisée sur la prise de décision avec des étudiants Slovènes en Tchéquie.</p>
+      <p data-i18n="about-p2">Je réalise actuellement un stage chez <strong>SEVEN</strong> (Casablanca, Maroc), où je participe à la construction d'un pipeline data de bout en bout — de l'ingestion jusqu'au dashboard KPIs — sur une stack moderne : dbt, Apache Spark, Power BI.</p>
+      <p data-i18n="about-p3">Enthousiaste et communicant, j'aime autant construire des pipelines de données que présenter des résultats à l'oral. Passionné de ski, musculation et voyages.</p>
     </div>
     <div class="stat-grid fade">
-      <div class="stat"><div class="stat-n">11-05-2006</div><div class="stat-l">Âge</div></div>
-      <div class="stat"><div class="stat-n">8+</div><div class="stat-l">Outils maîtrisés</div></div>
-      <div class="stat"><div class="stat-n">B2</div><div class="stat-l">Anglais professionnel</div></div>
-      <div class="stat"><div class="stat-n">3</div><div class="stat-l">Langues parlées</div></div>
+      <div class="stat"><div class="stat-n">11-05-2006</div><div class="stat-l" data-i18n="stat-age">Âge</div></div>
+      <div class="stat"><div class="stat-n">8+</div><div class="stat-l" data-i18n="stat-tools">Outils maîtrisés</div></div>
+      <div class="stat"><div class="stat-n">B2</div><div class="stat-l" data-i18n="stat-english">Anglais professionnel</div></div>
+      <div class="stat"><div class="stat-n">3</div><div class="stat-l" data-i18n="stat-languages">Langues parlées</div></div>
     </div>
   </div>
 </section>
 
 <section id="competences">
-  <span class="s-label">Compétences</span>
-  <h2 class="s-title">Stack & savoir-faire</h2>
+  <span class="s-label" data-i18n="skills-label">Compétences</span>
+  <h2 class="s-title" data-i18n="skills-title">Stack & savoir-faire</h2>
   <div class="skills-wrap">
     <div class="sk-group fade">
-      <div class="sk-title">Outils Data & BI</div>
+      <div class="sk-title" data-i18n="sk-data">Outils Data & BI</div>
       <div class="sk-tags">
         <span class="sk-tag">Power BI</span>
         <span class="sk-tag">Tableau</span>
@@ -233,7 +256,7 @@
       </div>
     </div>
     <div class="sk-group fade">
-      <div class="sk-title">Langages</div>
+      <div class="sk-title" data-i18n="sk-langs">Langages</div>
       <div class="sk-tags">
         <span class="sk-tag">Python</span>
         <span class="sk-tag">SQL</span>
@@ -245,34 +268,34 @@
       </div>
     </div>
     <div class="sk-group fade">
-      <div class="sk-title">Langues</div>
+      <div class="sk-title" data-i18n="sk-spoken">Langues</div>
       <div class="lang-row">
-        <div class="lang-item"><span>Français</span><span class="lang-lvl">Natif</span></div>
-        <div class="lang-item"><span>Anglais</span><span class="lang-lvl">B2 – Professionnel</span></div>
-        <div class="lang-item"><span>Italien</span><span class="lang-lvl">B1</span></div>
+        <div class="lang-item"><span data-i18n="lang-fr">Français</span><span class="lang-lvl" data-i18n="lang-fr-level">Natif</span></div>
+        <div class="lang-item"><span data-i18n="lang-en">Anglais</span><span class="lang-lvl" data-i18n="lang-en-level">B2 – Professionnel</span></div>
+        <div class="lang-item"><span data-i18n="lang-it">Italien</span><span class="lang-lvl" data-i18n="lang-it-level">B1</span></div>
       </div>
     </div>
     <div class="sk-group fade">
-      <div class="sk-title">Gouvernance & RGPD</div>
+      <div class="sk-title" data-i18n="sk-rgpd">Gouvernance & RGPD</div>
       <div class="lang-row">
         <div class="lang-item"><span>RGPD</span><span class="lang-lvl">17/20</span></div>
-        <div class="lang-item" style="font-size:0.78rem; color:var(--muted);">14h de cours avec intervention d'une avocate spécialisée</div>
+        <div class="lang-item" style="font-size:0.78rem; color:var(--muted);" data-i18n="rgpd-note">14h de cours avec intervention d'une avocate spécialisée</div>
       </div>
     </div>
   </div>
 </section>
 
 <section id="projets">
-  <span class="s-label">Projets</span>
-  <h2 class="s-title">Mes réalisations</h2>
+  <span class="s-label" data-i18n="projects-label">Projets</span>
+  <h2 class="s-title" data-i18n="projects-title">Mes réalisations</h2>
   <div class="proj-main" style="grid-template-columns: 1fr 1fr; margin-top: 3rem;">
 
     <div class="pcard fade" onclick="document.getElementById('modal-powerbi').classList.add('open')">
       <div class="pcard-img" style="height:240px"><img src="Dashboard_HR_1.png" alt="Power BI RH"></div>
       <div class="pcard-body">
         <div class="ptags"><span class="ptag">Power BI</span><span class="ptag">DAX</span></div>
-        <h3 class="ptitle">Tableaux de bord RH</h3>
-        <p class="pdesc">Dashboards interactifs multi-pages : effectifs, répartition géographique, pyramide des âges, masse salariale. Modélisation des données et mesures DAX.</p>
+        <h3 class="ptitle" data-i18n="pcard-powerbi-title">Tableaux de bord RH</h3>
+        <p class="pdesc" data-i18n="pcard-powerbi-desc">Dashboards interactifs multi-pages : effectifs, répartition géographique, pyramide des âges, masse salariale. Modélisation des données et mesures DAX.</p>
       </div>
     </div>
 
@@ -280,8 +303,8 @@
       <div class="pcard-img" style="height:240px"><img src="flow2.png" alt="KNIME ETL"></div>
       <div class="pcard-body">
         <div class="ptags"><span class="ptag">KNIME</span><span class="ptag">MySQL</span><span class="ptag">ETL</span></div>
-        <h3 class="ptitle">Chaîne décisionnelle ETL</h3>
-        <p class="pdesc">Intégration de données hétérogènes (CSV, Excel, XML) dans un data warehouse MySQL. Architecture en étoile, nettoyage et transformation automatisés.</p>
+        <h3 class="ptitle" data-i18n="pcard-knime-title">Chaîne décisionnelle ETL</h3>
+        <p class="pdesc" data-i18n="pcard-knime-desc">Intégration de données hétérogènes (CSV, Excel, XML) dans un data warehouse MySQL. Architecture en étoile, nettoyage et transformation automatisés.</p>
       </div>
     </div>
 
@@ -289,8 +312,8 @@
       <div class="pcard-img" style="height:240px"><img src="site1.png" alt="Walmart"></div>
       <div class="pcard-body">
         <div class="ptags"><span class="ptag">PHP</span><span class="ptag">MySQL</span><span class="ptag">Chart.js</span></div>
-        <h3 class="ptitle">Analyse de ventes Walmart</h3>
-        <p class="pdesc">Mini-site PHP/MySQL analysant les ventes hebdomadaires. Base en étoile, requêtes dynamiques, visualisations avec coloration saisonnière et KPIs.</p>
+        <h3 class="ptitle" data-i18n="pcard-walmart-title">Analyse de ventes Walmart</h3>
+        <p class="pdesc" data-i18n="pcard-walmart-desc">Mini-site PHP/MySQL analysant les ventes hebdomadaires. Base en étoile, requêtes dynamiques, visualisations avec coloration saisonnière et KPIs.</p>
       </div>
     </div>
 
@@ -298,8 +321,8 @@
       <div class="pcard-img" style="height:240px"><img src="IMG_0086.jpeg" alt="Prague"></div>
       <div class="pcard-body">
         <div class="ptags"><span class="ptag">Power BI</span><span class="ptag">Anglais</span><span class="ptag">International</span></div>
-        <h3 class="ptitle">BIP Prague – Data-Driven Decision Making</h3>
-        <p class="pdesc">Collaboration internationale à l'Université d'Économie de Prague. Simulation business data-driven en anglais avec des étudiants européens.</p>
+        <h3 class="ptitle" data-i18n="pcard-prague-title">BIP Prague – Data-Driven Decision Making</h3>
+        <p class="pdesc" data-i18n="pcard-prague-desc">Collaboration internationale à l'Université d'Économie de Prague. Simulation business data-driven en anglais avec des étudiants européens.</p>
       </div>
     </div>
 
@@ -307,8 +330,8 @@
       <div class="pcard-img" style="height:240px"><img src="AppR.png" alt="App R Shiny"></div>
       <div class="pcard-body">
         <div class="ptags"><span class="ptag">R</span><span class="ptag">Shiny</span><span class="ptag">ACM / CAH</span></div>
-        <h3 class="ptitle">App interactive R Shiny</h3>
-        <p class="pdesc">Analyse d'une enquête de 4 000 répondants sur l'usage des IAG à l'UGA. Segmentation en 4 profils via ACM et CAH, restitution via application interactive.</p>
+        <h3 class="ptitle" data-i18n="pcard-shiny-title">App interactive R Shiny</h3>
+        <p class="pdesc" data-i18n="pcard-shiny-desc">Analyse d'une enquête de 4 000 répondants sur l'usage des IAG à l'UGA. Segmentation en 4 profils via ACM et CAH, restitution via application interactive.</p>
       </div>
     </div>
 
@@ -316,8 +339,8 @@
       <div class="pcard-img" style="height:240px"><img src="survey123.png" alt="Inventaire UGA"></div>
       <div class="pcard-body">
         <div class="ptags"><span class="ptag">ArcGIS</span><span class="ptag">Survey123</span></div>
-        <h3 class="ptitle">Inventaire signalisation UGA</h3>
-        <p class="pdesc">Inventaire terrain des traversées de tramway sur le campus UGA. Dashboard et StoryMap ArcGIS livrés à un client réel (DGD PAT).</p>
+        <h3 class="ptitle" data-i18n="pcard-arcgis-title">Inventaire signalisation UGA</h3>
+        <p class="pdesc" data-i18n="pcard-arcgis-desc">Inventaire terrain des traversées de tramway sur le campus UGA. Dashboard et StoryMap ArcGIS livrés à un client réel (DGD PAT).</p>
       </div>
     </div>
 
@@ -325,8 +348,8 @@
       <div class="pcard-img" style="height:240px"><img src="bugatti.png" alt="Catalogue Lego"></div>
       <div class="pcard-body">
         <div class="ptags"><span class="ptag">Python</span><span class="ptag">API REST</span></div>
-        <h3 class="ptitle">Catalogue Lego</h3>
-        <p class="pdesc">Extraction automatisée via l'API Rebrickable et génération d'un catalogue HTML interactif filtrable par thème et année.</p>
+        <h3 class="ptitle" data-i18n="pcard-lego-title">Catalogue Lego</h3>
+        <p class="pdesc" data-i18n="pcard-lego-desc">Extraction automatisée via l'API Rebrickable et génération d'un catalogue HTML interactif filtrable par thème et année.</p>
       </div>
     </div>
 
@@ -334,8 +357,8 @@
       <div class="pcard-img" style="height:240px"><img src="RF-DARES_RVB.png" alt="DARES"></div>
       <div class="pcard-body">
         <div class="ptags"><span class="ptag">R</span><span class="ptag">Tableau</span><span class="ptag">Statistiques</span></div>
-        <h3 class="ptitle">Étude statistique DARES</h3>
-        <p class="pdesc">Analyse statistique de la syndicalisation dans le secteur médico-social. Nettoyage, visualisations RStudio et Tableau, présentation orale des résultats.</p>
+        <h3 class="ptitle" data-i18n="pcard-dares-title">Étude statistique DARES</h3>
+        <p class="pdesc" data-i18n="pcard-dares-desc">Analyse statistique de la syndicalisation dans le secteur médico-social. Nettoyage, visualisations RStudio et Tableau, présentation orale des résultats.</p>
       </div>
     </div>
 
@@ -349,8 +372,8 @@
     <button class="modal-close" onclick="document.getElementById('modal-powerbi').classList.remove('open')">✕</button>
     <div class="modal-header">
       <div class="ptags"><span class="ptag">Power BI</span><span class="ptag">DAX</span><span class="ptag">Modélisation</span></div>
-      <h2>Tableaux de bord RH</h2>
-      <p>Conception d'un rapport Power BI multi-pages sur un jeu de données RH fictif d'une entreprise internationale. L'objectif était de permettre à la direction d'analyser les effectifs, les salaires, la pyramide des âges et la répartition géographique via des visualisations interactives.</p>
+      <h2 data-i18n="modal-powerbi-title">Tableaux de bord RH</h2>
+      <p data-i18n="modal-powerbi-intro">Conception d'un rapport Power BI multi-pages sur un jeu de données RH fictif d'une entreprise internationale. L'objectif était de permettre à la direction d'analyser les effectifs, les salaires, la pyramide des âges et la répartition géographique via des visualisations interactives.</p>
     </div>
     <div class="modal-imgs cols1">
       <img src="Dashboard_HR_1.png" alt="Vue salaires">
@@ -359,8 +382,8 @@
       <img src="Dashboard_HR_4.png" alt="TOP 5">
     </div>
     <div class="modal-section">
-      <h4>Ce qui a été fait</h4>
-      <p>Modélisation des données en étoile, création de mesures DAX (salaire moyen, masse salariale, écarts à la moyenne), mise en place de 5 pages thématiques avec navigation par boutons, filtres croisés et indicateurs de performance. La page "Employé dans la moyenne" permet de comparer chaque salarié aux moyennes de sa tranche d'ancienneté.</p>
+      <h4 data-i18n="modal-powerbi-done-label">Ce qui a été fait</h4>
+      <p data-i18n="modal-powerbi-done">Modélisation des données en étoile, création de mesures DAX (salaire moyen, masse salariale, écarts à la moyenne), mise en place de 5 pages thématiques avec navigation par boutons, filtres croisés et indicateurs de performance. La page "Employé dans la moyenne" permet de comparer chaque salarié aux moyennes de sa tranche d'ancienneté.</p>
     </div>
   </div>
 </div>
@@ -370,8 +393,8 @@
     <button class="modal-close" onclick="document.getElementById('modal-knime').classList.remove('open')">✕</button>
     <div class="modal-header">
       <div class="ptags"><span class="ptag">KNIME</span><span class="ptag">MySQL</span><span class="ptag">ETL</span><span class="ptag">Data Warehouse</span></div>
-      <h2>Chaîne décisionnelle ETL</h2>
-      <p>Construction d'une chaîne ETL complète sous KNIME pour intégrer des données de transport scolaire issues de trois sources hétérogènes (CSV, Excel, XML) dans un data warehouse MySQL. Modélisation en schéma étoile avec une table de faits ROUTE et trois dimensions : Ligne, Bus, Date.</p>
+      <h2 data-i18n="modal-knime-title">Chaîne décisionnelle ETL</h2>
+      <p data-i18n="modal-knime-intro">Construction d'une chaîne ETL complète sous KNIME pour intégrer des données de transport scolaire issues de trois sources hétérogènes (CSV, Excel, XML) dans un data warehouse MySQL. Modélisation en schéma étoile avec une table de faits ROUTE et trois dimensions : Ligne, Bus, Date.</p>
     </div>
     <div class="modal-imgs cols1">
       <img src="flow1.png" alt="Flux XML">
@@ -379,8 +402,8 @@
       <img src="schemaetoile.png" alt="Schéma étoile">
     </div>
     <div class="modal-section">
-      <h4>Ce qui a été fait</h4>
-      <p>Traitement des fichiers XML via XPath, nettoyage des identifiants (BUS_01 → 1, LIGNE_09 → 9), normalisation des types, fusion de trois flux distincts, calcul des km parcourus et chargement en base MySQL. Le schéma étoile inclut une dimension Date décomposée en année, mois, semaine et jour. 15/20 à la présentation de groupe, 19,75/20 à l'examen écrit (majorant).</p>
+      <h4 data-i18n="modal-knime-done-label">Ce qui a été fait</h4>
+      <p data-i18n="modal-knime-done">Traitement des fichiers XML via XPath, nettoyage des identifiants (BUS_01 → 1, LIGNE_09 → 9), normalisation des types, fusion de trois flux distincts, calcul des km parcourus et chargement en base MySQL. Le schéma étoile inclut une dimension Date décomposée en année, mois, semaine et jour. 15/20 à la présentation de groupe, 19,75/20 à l'examen écrit (majorant).</p>
     </div>
   </div>
 </div>
@@ -390,8 +413,8 @@
     <button class="modal-close" onclick="document.getElementById('modal-walmart').classList.remove('open')">✕</button>
     <div class="modal-header">
       <div class="ptags"><span class="ptag">PHP</span><span class="ptag">MySQL</span><span class="ptag">Chart.js</span><span class="ptag">HTML/CSS</span></div>
-      <h2>Analyse de ventes Walmart</h2>
-      <p>Mini-site web d'analyse des ventes hebdomadaires de 45 magasins Walmart aux États-Unis (2010–2012), développé en PHP/MySQL avec visualisations dynamiques via Chart.js. Les données sont chargées en asynchrone (fetch/await) depuis la base MySQL.</p>
+      <h2 data-i18n="modal-walmart-title">Analyse de ventes Walmart</h2>
+      <p data-i18n="modal-walmart-intro">Mini-site web d'analyse des ventes hebdomadaires de 45 magasins Walmart aux États-Unis (2010–2012), développé en PHP/MySQL avec visualisations dynamiques via Chart.js. Les données sont chargées en asynchrone (fetch/await) depuis la base MySQL.</p>
     </div>
     <div class="modal-imgs cols1">
       <img src="site1.png" alt="Accueil">
@@ -400,8 +423,8 @@
       <img src="site4.png" alt="Graphiques">
     </div>
     <div class="modal-section">
-      <h4>Ce qui a été fait</h4>
-      <p>Modélisation en schéma étoile (faits_ventes, dim_magasin, dim_temps), import de 6 435 lignes, requêtes SQL dynamiques avec filtres, pages Indicateurs (top 10 magasins, ventes par saison), Analyse (filtres magasin/année/saison), et Graphiques (ventes par mois, région, semaines fériées vs normales).</p>
+      <h4 data-i18n="modal-walmart-done-label">Ce qui a été fait</h4>
+      <p data-i18n="modal-walmart-done">Modélisation en schéma étoile (faits_ventes, dim_magasin, dim_temps), import de 6 435 lignes, requêtes SQL dynamiques avec filtres, pages Indicateurs (top 10 magasins, ventes par saison), Analyse (filtres magasin/année/saison), et Graphiques (ventes par mois, région, semaines fériées vs normales).</p>
     </div>
   </div>
 </div>
@@ -411,8 +434,8 @@
     <button class="modal-close" onclick="document.getElementById('modal-prague').classList.remove('open')">✕</button>
     <div class="modal-header">
       <div class="ptags"><span class="ptag">Power BI</span><span class="ptag">Anglais</span><span class="ptag">International</span><span class="ptag">Business Simulation</span></div>
-      <h2>BIP Prague – Data-Driven Decision Making</h2>
-      <p>Programme hybride intensif à l'Université d'Économie de Prague (VŠE) en avril 2026. Une semaine de travail en anglais avec des étudiants Slovènes autour de la prise de décision dans un contexte business fictif.</p>
+      <h2 data-i18n="modal-prague-title">BIP Prague – Data-Driven Decision Making</h2>
+      <p data-i18n="modal-prague-intro">Programme hybride intensif à l'Université d'Économie de Prague (VŠE) en avril 2026. Une semaine de travail en anglais avec des étudiants Slovènes autour de la prise de décision dans un contexte business fictif.</p>
     </div>
     <div class="modal-imgs cols1">
       <img src="adgame1.png" alt="AdGame interface">
@@ -420,12 +443,12 @@
       <figure style="margin:0"><img src="IMG_0339.jpg" alt="Vue depuis le pont Charles" style="width:100%"><figcaption style="font-size:0.75rem;color:var(--muted);padding:0.4rem 0;text-align:center;">Vue depuis le Pont Charles, Prague</figcaption></figure>
     </div>
     <div class="modal-section">
-      <h4>AdGame – La simulation</h4>
-      <p>Simulation en 11 rounds sur AdGame : chaque équipe devait créer des plats à vendre et lancer des campagnes publicitaires ciblées par quartiers de Prague et par type de média (arrêts de bus, mobilier urbain, affichage grand format, covering de véhicules, street marketing...) À chaque round, les données des meilleurs produits (caractéristiques, prix, équipe vendeuse) étaient disponibles pour ajuster la stratégie.</p>
+      <h4 data-i18n="modal-prague-sim-label">AdGame – La simulation</h4>
+      <p data-i18n="modal-prague-sim">Simulation en 11 rounds sur AdGame : chaque équipe devait créer des plats à vendre et lancer des campagnes publicitaires ciblées par quartiers de Prague et par type de média (arrêts de bus, mobilier urbain, affichage grand format, covering de véhicules, street marketing...) À chaque round, les données des meilleurs produits (caractéristiques, prix, équipe vendeuse) étaient disponibles pour ajuster la stratégie.</p>
     </div>
     <div class="modal-section">
-      <h4>Notre parcours</h4>
-      <p>Notre équipe a terminé 4e sur 5. Mais à partir du round 8, après un démarrage difficile, nous avons dépassé l'équipe 5 de plus de 50% de leur chiffre — alors qu'au départ nous étions derniers avec 20% de moins qu'eux. En analysant les données disponibles à chaque round (meilleurs produits, caractéristiques, équipes), nous avons repositionné notre stratégie. Un réveil tardif, mais démonstratif du pouvoir de la donnée dans la décision.</p>
+      <h4 data-i18n="modal-prague-journey-label">Notre parcours</h4>
+      <p data-i18n="modal-prague-journey">Notre équipe a terminé 4e sur 5. Mais à partir du round 8, après un démarrage difficile, nous avons dépassé l'équipe 5 de plus de 50% de leur chiffre — alors qu'au départ nous étions derniers avec 20% de moins qu'eux. En analysant les données disponibles à chaque round (meilleurs produits, caractéristiques, équipes), nous avons repositionné notre stratégie. Un réveil tardif, mais démonstratif du pouvoir de la donnée dans la décision.</p>
     </div>
   </div>
 </div>
@@ -435,8 +458,8 @@
     <button class="modal-close" onclick="document.getElementById('modal-shiny').classList.remove('open')">✕</button>
     <div class="modal-header">
       <div class="ptags"><span class="ptag">R</span><span class="ptag">Shiny</span><span class="ptag">FactoMineR</span><span class="ptag">ACM</span><span class="ptag">CAH</span></div>
-      <h2>App interactive R Shiny – IAG UGA</h2>
-      <p>Analyse d'une enquête conduite à l'Université Grenoble Alpes auprès de 3 092 étudiants sur leurs habitudes de travail et leur usage des outils d'IA générative. Deux thèmes analytiques traités : organisation du travail et usage des IAG.</p>
+      <h2 data-i18n="modal-shiny-title">App interactive R Shiny – IAG UGA</h2>
+      <p data-i18n="modal-shiny-intro">Analyse d'une enquête conduite à l'Université Grenoble Alpes auprès de 3 092 étudiants sur leurs habitudes de travail et leur usage des outils d'IA générative. Deux thèmes analytiques traités : organisation du travail et usage des IAG.</p>
     </div>
     <div class="modal-imgs cols1">
       <img src="app1.png" alt="Vue d'ensemble">
@@ -444,8 +467,8 @@
       <img src="app4.png" alt="Thème travail">
     </div>
     <div class="modal-section">
-      <h4>Ce qui a été fait</h4>
-      <p>Pipeline complet sous R : nettoyage, analyses par ACM, classification ascendante hiérarchique (méthode de Ward), interprétation des profils via catdes. Restitution via une application Shiny avec filtres, graphiques interactifs et navigation multi-pages.</p>
+      <h4 data-i18n="modal-shiny-done-label">Ce qui a été fait</h4>
+      <p data-i18n="modal-shiny-done">Pipeline complet sous R : nettoyage, analyses par ACM, classification ascendante hiérarchique (méthode de Ward), interprétation des profils via catdes. Restitution via une application Shiny avec filtres, graphiques interactifs et navigation multi-pages.</p>
     </div>
   </div>
 </div>
@@ -455,8 +478,8 @@
     <button class="modal-close" onclick="document.getElementById('modal-arcgis').classList.remove('open')">✕</button>
     <div class="modal-header">
       <div class="ptags"><span class="ptag">ArcGIS</span><span class="ptag">Survey123</span><span class="ptag">Dashboard</span><span class="ptag">StoryMap</span></div>
-      <h2>Inventaire signalisation UGA</h2>
-      <p>Projet réalisé pour un client réel — la DGD PAT de l'Université Grenoble Alpes. Inventaire de la signalisation aux traversées de tramway sur le campus : panneaux Attention Tram, panneaux C20C et bandes d'éveil.</p>
+      <h2 data-i18n="modal-arcgis-title">Inventaire signalisation UGA</h2>
+      <p data-i18n="modal-arcgis-intro">Projet réalisé pour un client réel — la DGD PAT de l'Université Grenoble Alpes. Inventaire de la signalisation aux traversées de tramway sur le campus : panneaux Attention Tram, panneaux C20C et bandes d'éveil.</p>
     </div>
     <div class="modal-imgs cols1">
       <img src="arcgis.png" alt="Architecture projet">
@@ -464,8 +487,8 @@
       <img src="survey2.png" alt="Localisation GPS">
     </div>
     <div class="modal-section">
-      <h4>Ce qui a été fait</h4>
-      <p>Conception d'un formulaire de collecte terrain sur ArcGIS Survey123 avec géolocalisation GPS, photos et état des équipements. Les données sont stockées dans ArcGIS Online et traitées via champs calculés (Arcade/SQL) pour estimer les coûts de remise en état. Livraison d'un Dashboard ArcGIS avec KPIs et cartes interactives, et d'une StoryMap de restitution pour le client.</p>
+      <h4 data-i18n="modal-arcgis-done-label">Ce qui a été fait</h4>
+      <p data-i18n="modal-arcgis-done">Conception d'un formulaire de collecte terrain sur ArcGIS Survey123 avec géolocalisation GPS, photos et état des équipements. Les données sont stockées dans ArcGIS Online et traitées via champs calculés (Arcade/SQL) pour estimer les coûts de remise en état. Livraison d'un Dashboard ArcGIS avec KPIs et cartes interactives, et d'une StoryMap de restitution pour le client.</p>
     </div>
   </div>
 </div>
@@ -475,19 +498,19 @@
     <button class="modal-close" onclick="document.getElementById('modal-lego').classList.remove('open')">✕</button>
     <div class="modal-header">
       <div class="ptags"><span class="ptag">Python</span><span class="ptag">API REST</span><span class="ptag">HTML/CSS</span></div>
-      <h2>Catalogue Lego – API Rebrickable</h2>
-      <p>Collecte automatisée de données LEGO via l'API REST Rebrickable et génération d'un catalogue HTML interactif. Architecture modulaire en 3 fichiers Python : configuration, couche API, interface utilisateur.</p>
+      <h2 data-i18n="modal-lego-title">Catalogue Lego – API Rebrickable</h2>
+      <p data-i18n="modal-lego-intro">Collecte automatisée de données LEGO via l'API REST Rebrickable et génération d'un catalogue HTML interactif. Architecture modulaire en 3 fichiers Python : configuration, couche API, interface utilisateur.</p>
     </div>
     <div class="modal-imgs cols1">
       <figure style="margin:0">
         <img src="menu_lego.png" alt="Menu console">
-        <figcaption style="font-size:0.75rem;color:var(--muted);padding:0.4rem 0;text-align:center;">Interface console : l'utilisateur choisit un thème ou un set parmi une liste prédéfinie — ici sélection du Bugatti Chiron, qui génère automatiquement la page HTML correspondante</figcaption>
+        <figcaption style="font-size:0.75rem;color:var(--muted);padding:0.4rem 0;text-align:center;" data-i18n="modal-lego-caption">Interface console : l'utilisateur choisit un thème ou un set parmi une liste prédéfinie — ici sélection du Bugatti Chiron, qui génère automatiquement la page HTML correspondante</figcaption>
       </figure>
       <img src="bugatti.png" alt="Page HTML générée">
     </div>
     <div class="modal-section">
-      <h4>Ce qui a été fait</h4>
-      <p>Requêtes HTTP authentifiées vers les endpoints /lego/themes et /lego/sets, gestion de la pagination, parsing JSON, génération de pages HTML avec CSS flexbox pour un rendu catalogue e-commerce. L'utilisateur peut filtrer par thème (15 disponibles) et par année, chaque carte redirigeant vers la fiche Rebrickable du set.</p>
+      <h4 data-i18n="modal-lego-done-label">Ce qui a été fait</h4>
+      <p data-i18n="modal-lego-done">Requêtes HTTP authentifiées vers les endpoints /lego/themes et /lego/sets, gestion de la pagination, parsing JSON, génération de pages HTML avec CSS flexbox pour un rendu catalogue e-commerce. L'utilisateur peut filtrer par thème (15 disponibles) et par année, chaque carte redirigeant vers la fiche Rebrickable du set.</p>
     </div>
   </div>
 </div>
@@ -497,31 +520,31 @@
     <button class="modal-close" onclick="document.getElementById('modal-dares').classList.remove('open')">✕</button>
     <div class="modal-header">
       <div class="ptags"><span class="ptag">R</span><span class="ptag">Tableau</span><span class="ptag">Statistiques</span></div>
-      <h2>Étude statistique – Syndicalisation DARES</h2>
-      <p>Analyse statistique d'un jeu de données issu de la DARES (Direction de l'Animation de la Recherche, des Études et des Statistiques) portant sur la syndicalisation dans le secteur médico-social.</p>
+      <h2 data-i18n="modal-dares-title">Étude statistique – Syndicalisation DARES</h2>
+      <p data-i18n="modal-dares-intro">Analyse statistique d'un jeu de données issu de la DARES (Direction de l'Animation de la Recherche, des Études et des Statistiques) portant sur la syndicalisation dans le secteur médico-social.</p>
     </div>
     <div class="modal-imgs cols1">
       <img src="RF-DARES_RVB.png" alt="DARES">
     </div>
     <div class="modal-section">
-      <h4>Ce qui a été fait</h4>
-      <p>Nettoyage et recodage des variables sous RStudio, statistiques descriptives univariées et bivariées, visualisations commentées (histogrammes, boxplots, tableaux croisés). Restitution des résultats sous Tableau et présentation orale devant un jury</p>
+      <h4 data-i18n="modal-dares-done-label">Ce qui a été fait</h4>
+      <p data-i18n="modal-dares-done">Nettoyage et recodage des variables sous RStudio, statistiques descriptives univariées et bivariées, visualisations commentées (histogrammes, boxplots, tableaux croisés). Restitution des résultats sous Tableau et présentation orale devant un jury</p>
     </div>
   </div>
 </div>
 
 <section id="experiences">
-  <span class="s-label">Expériences</span>
-  <h2 class="s-title">Parcours professionnel</h2>
+  <span class="s-label" data-i18n="exp-label">Expériences</span>
+  <h2 class="s-title" data-i18n="exp-title">Parcours professionnel</h2>
   <div class="proj-main" style="grid-template-columns: repeat(3, 1fr); margin-top: 3rem;">
     <div class="pcard fade">
       <div class="pcard-img" style="height:160px;">
         <img src="images.png" alt="Utile">
       </div>
       <div class="pcard-body">
-        <div class="ptags"><span class="ptag">Jan – Avr 2026</span><span class="ptag">3 mois</span></div>
-        <h3 class="ptitle">Employé de rayon</h3>
-        <p class="pdesc">Utile, La Terrasse – Mise en rayon, contact client, travail en autonomie.</p>
+        <div class="ptags"><span class="ptag" data-i18n="exp-utile-period">Jan – Avr 2026</span><span class="ptag" data-i18n="exp-utile-duration">3 mois</span></div>
+        <h3 class="ptitle" data-i18n="exp-utile-role">Employé de rayon</h3>
+        <p class="pdesc" data-i18n="exp-utile-desc">Utile, La Terrasse – Mise en rayon, contact client, travail en autonomie.</p>
       </div>
     </div>
     <div class="pcard fade">
@@ -529,9 +552,9 @@
         <img src="acousteam.jpg" alt="Acousteam">
       </div>
       <div class="pcard-body">
-        <div class="ptags"><span class="ptag">Juin 2025</span><span class="ptag">2 semaines</span></div>
-        <h3 class="ptitle">Manutentionnaire</h3>
-        <p class="pdesc">Acousteam, Lumbin – Conception et assemblage de bâches acoustiques. Rigueur, esprit d'équipe, attention au détail.</p>
+        <div class="ptags"><span class="ptag" data-i18n="exp-acou-period">Juin 2025</span><span class="ptag" data-i18n="exp-acou-duration">2 semaines</span></div>
+        <h3 class="ptitle" data-i18n="exp-acou-role">Manutentionnaire</h3>
+        <p class="pdesc" data-i18n="exp-acou-desc">Acousteam, Lumbin – Conception et assemblage de bâches acoustiques. Rigueur, esprit d'équipe, attention au détail.</p>
       </div>
     </div>
     <div class="pcard fade">
@@ -539,9 +562,9 @@
         <img src="380007989.jpg" alt="EHPAD">
       </div>
       <div class="pcard-body">
-        <div class="ptags"><span class="ptag">2022 – 2023</span><span class="ptag">6 mois</span></div>
-        <h3 class="ptitle">Bénévole</h3>
-        <p class="pdesc">EHPAD Les Ombrages, La Tronche – Visites régulières de résidents. Écoute, accompagnement, patience.</p>
+        <div class="ptags"><span class="ptag" data-i18n="exp-ehpad-period">2022 – 2023</span><span class="ptag" data-i18n="exp-ehpad-duration">6 mois</span></div>
+        <h3 class="ptitle" data-i18n="exp-ehpad-role">Bénévole</h3>
+        <p class="pdesc" data-i18n="exp-ehpad-desc">EHPAD Les Ombrages, La Tronche – Visites régulières de résidents. Écoute, accompagnement, patience.</p>
       </div>
     </div>
   </div>
@@ -549,9 +572,9 @@
 
 <section id="contact">
   <div class="contact-wrap">
-    <span class="s-label">Contact</span>
-    <h2 class="s-title">Travaillons ensemble<br>dans le futur</h2>
-    <p class="contact-desc">Actuellement en stage à l'international jusqu'à juin 2026,<br>en alternance à Grenoble de septembre 2026 à août 2027.</p>
+    <span class="s-label" data-i18n="contact-label">Contact</span>
+    <h2 class="s-title" data-i18n="contact-title">Travaillons ensemble<br>dans le futur</h2>
+    <p class="contact-desc" data-i18n="contact-desc">Actuellement en stage à l'international jusqu'à juin 2026,<br>en alternance à Grenoble de septembre 2026 à août 2027.</p>
     <div class="clinks">
       <a href="mailto:ifaihe@proton.me" class="clink primary">ifaihe@proton.me</a>
       <a href="https://linkedin.com/in/ismael-faihe" target="_blank" class="clink">LinkedIn ↗</a>
@@ -561,7 +584,7 @@
 
 <footer>
   <span>© 2026 Ismaël Faihe</span>
-  <span>IUT2 Grenoble · BUT Science des Données</span>
+  <span data-i18n="footer-school">IUT2 Grenoble · BUT Science des Données</span>
 </footer>
 
 <script>
@@ -569,6 +592,390 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+</script>
+
+<script>
+// ─── Translation data ───────────────────────────────────────────────────────
+const translations = {
+  fr: {
+    // Nav
+    'nav-about':        'À propos',
+    'nav-skills':       'Compétences',
+    'nav-projects':     'Projets',
+    'nav-contact':      'Contact',
+    // Hero
+    'hero-tag':         'Data & Business Intelligence',
+    'hero-desc':        'Étudiant en BUT Science des Données à l\'IUT2 de Grenoble. Je construis des pipelines de données et des outils décisionnels concrets, avec méthode et rigueur.',
+    'hero-btn-projects':'Voir mes projets',
+    'hero-btn-contact': 'Me contacter →',
+    'hero-avail':       'Stage · Avril – Juin 2026 &nbsp;·&nbsp; Alternance · Sept. 2026 – Août 2027',
+    // About
+    'about-label':      'À propos',
+    'about-title':      'Donner du sens<br>à la donnée',
+    'about-p1':         'Je me destine au <strong>data engineering</strong> et souhaite évoluer dans un environnement international. En avril 2026, j\'ai participé au <strong>BIP Prague</strong> (VŠE) : une semaine de travail en anglais focalisée sur la prise de décision avec des étudiants Slovènes en Tchéquie.',
+    'about-p2':         'Je réalise actuellement un stage chez <strong>SEVEN</strong> (Casablanca, Maroc), où je participe à la construction d\'un pipeline data de bout en bout — de l\'ingestion jusqu\'au dashboard KPIs — sur une stack moderne : dbt, Apache Spark, Power BI.',
+    'about-p3':         'Enthousiaste et communicant, j\'aime autant construire des pipelines de données que présenter des résultats à l\'oral. Passionné de ski, musculation et voyages.',
+    'stat-age':         'Âge',
+    'stat-tools':       'Outils maîtrisés',
+    'stat-english':     'Anglais professionnel',
+    'stat-languages':   'Langues parlées',
+    // Skills
+    'skills-label':     'Compétences',
+    'skills-title':     'Stack & savoir-faire',
+    'sk-data':          'Outils Data & BI',
+    'sk-langs':         'Langages',
+    'sk-spoken':        'Langues',
+    'sk-rgpd':          'Gouvernance & RGPD',
+    'lang-fr':          'Français',
+    'lang-en':          'Anglais',
+    'lang-it':          'Italien',
+    'lang-fr-level':    'Natif',
+    'lang-en-level':    'B2 – Professionnel',
+    'lang-it-level':    'B1',
+    'rgpd-note':        '14h de cours avec intervention d\'une avocate spécialisée',
+    // Projects
+    'projects-label':   'Projets',
+    'projects-title':   'Mes réalisations',
+    // Project cards
+    'pcard-powerbi-title': 'Tableaux de bord RH',
+    'pcard-powerbi-desc':  'Dashboards interactifs multi-pages : effectifs, répartition géographique, pyramide des âges, masse salariale. Modélisation des données et mesures DAX.',
+    'pcard-knime-title':   'Chaîne décisionnelle ETL',
+    'pcard-knime-desc':    'Intégration de données hétérogènes (CSV, Excel, XML) dans un data warehouse MySQL. Architecture en étoile, nettoyage et transformation automatisés.',
+    'pcard-walmart-title': 'Analyse de ventes Walmart',
+    'pcard-walmart-desc':  'Mini-site PHP/MySQL analysant les ventes hebdomadaires. Base en étoile, requêtes dynamiques, visualisations avec coloration saisonnière et KPIs.',
+    'pcard-prague-title':  'BIP Prague – Data-Driven Decision Making',
+    'pcard-prague-desc':   'Collaboration internationale à l\'Université d\'Économie de Prague. Simulation business data-driven en anglais avec des étudiants européens.',
+    'pcard-shiny-title':   'App interactive R Shiny',
+    'pcard-shiny-desc':    'Analyse d\'une enquête de 4 000 répondants sur l\'usage des IAG à l\'UGA. Segmentation en 4 profils via ACM et CAH, restitution via application interactive.',
+    'pcard-arcgis-title':  'Inventaire signalisation UGA',
+    'pcard-arcgis-desc':   'Inventaire terrain des traversées de tramway sur le campus UGA. Dashboard et StoryMap ArcGIS livrés à un client réel (DGD PAT).',
+    'pcard-lego-title':    'Catalogue Lego',
+    'pcard-lego-desc':     'Extraction automatisée via l\'API Rebrickable et génération d\'un catalogue HTML interactif filtrable par thème et année.',
+    'pcard-dares-title':   'Étude statistique DARES',
+    'pcard-dares-desc':    'Analyse statistique de la syndicalisation dans le secteur médico-social. Nettoyage, visualisations RStudio et Tableau, présentation orale des résultats.',
+    // Modals
+    'modal-powerbi-title': 'Tableaux de bord RH',
+    'modal-powerbi-intro': 'Conception d\'un rapport Power BI multi-pages sur un jeu de données RH fictif d\'une entreprise internationale. L\'objectif était de permettre à la direction d\'analyser les effectifs, les salaires, la pyramide des âges et la répartition géographique via des visualisations interactives.',
+    'modal-powerbi-done-label': 'Ce qui a été fait',
+    'modal-powerbi-done': 'Modélisation des données en étoile, création de mesures DAX (salaire moyen, masse salariale, écarts à la moyenne), mise en place de 5 pages thématiques avec navigation par boutons, filtres croisés et indicateurs de performance. La page "Employé dans la moyenne" permet de comparer chaque salarié aux moyennes de sa tranche d\'ancienneté.',
+    'modal-knime-title': 'Chaîne décisionnelle ETL',
+    'modal-knime-intro': 'Construction d\'une chaîne ETL complète sous KNIME pour intégrer des données de transport scolaire issues de trois sources hétérogènes (CSV, Excel, XML) dans un data warehouse MySQL. Modélisation en schéma étoile avec une table de faits ROUTE et trois dimensions : Ligne, Bus, Date.',
+    'modal-knime-done-label': 'Ce qui a été fait',
+    'modal-knime-done': 'Traitement des fichiers XML via XPath, nettoyage des identifiants (BUS_01 → 1, LIGNE_09 → 9), normalisation des types, fusion de trois flux distincts, calcul des km parcourus et chargement en base MySQL. Le schéma étoile inclut une dimension Date décomposée en année, mois, semaine et jour. 15/20 à la présentation de groupe, 19,75/20 à l\'examen écrit (majorant).',
+    'modal-walmart-title': 'Analyse de ventes Walmart',
+    'modal-walmart-intro': 'Mini-site web d\'analyse des ventes hebdomadaires de 45 magasins Walmart aux États-Unis (2010–2012), développé en PHP/MySQL avec visualisations dynamiques via Chart.js. Les données sont chargées en asynchrone (fetch/await) depuis la base MySQL.',
+    'modal-walmart-done-label': 'Ce qui a été fait',
+    'modal-walmart-done': 'Modélisation en schéma étoile (faits_ventes, dim_magasin, dim_temps), import de 6 435 lignes, requêtes SQL dynamiques avec filtres, pages Indicateurs (top 10 magasins, ventes par saison), Analyse (filtres magasin/année/saison), et Graphiques (ventes par mois, région, semaines fériées vs normales).',
+    'modal-prague-title': 'BIP Prague – Data-Driven Decision Making',
+    'modal-prague-intro': 'Programme hybride intensif à l\'Université d\'Économie de Prague (VŠE) en avril 2026. Une semaine de travail en anglais avec des étudiants Slovènes autour de la prise de décision dans un contexte business fictif.',
+    'modal-prague-sim-label': 'AdGame – La simulation',
+    'modal-prague-sim': 'Simulation en 11 rounds sur AdGame : chaque équipe devait créer des plats à vendre et lancer des campagnes publicitaires ciblées par quartiers de Prague et par type de média (arrêts de bus, mobilier urbain, affichage grand format, covering de véhicules, street marketing...) À chaque round, les données des meilleurs produits (caractéristiques, prix, équipe vendeuse) étaient disponibles pour ajuster la stratégie.',
+    'modal-prague-journey-label': 'Notre parcours',
+    'modal-prague-journey': 'Notre équipe a terminé 4e sur 5. Mais à partir du round 8, après un démarrage difficile, nous avons dépassé l\'équipe 5 de plus de 50% de leur chiffre — alors qu\'au départ nous étions derniers avec 20% de moins qu\'eux. En analysant les données disponibles à chaque round (meilleurs produits, caractéristiques, équipes), nous avons repositionné notre stratégie. Un réveil tardif, mais démonstratif du pouvoir de la donnée dans la décision.',
+    'modal-shiny-title': 'App interactive R Shiny – IAG UGA',
+    'modal-shiny-intro': 'Analyse d\'une enquête conduite à l\'Université Grenoble Alpes auprès de 3 092 étudiants sur leurs habitudes de travail et leur usage des outils d\'IA générative. Deux thèmes analytiques traités : organisation du travail et usage des IAG.',
+    'modal-shiny-done-label': 'Ce qui a été fait',
+    'modal-shiny-done': 'Pipeline complet sous R : nettoyage, analyses par ACM, classification ascendante hiérarchique (méthode de Ward), interprétation des profils via catdes. Restitution via une application Shiny avec filtres, graphiques interactifs et navigation multi-pages.',
+    'modal-arcgis-title': 'Inventaire signalisation UGA',
+    'modal-arcgis-intro': 'Projet réalisé pour un client réel — la DGD PAT de l\'Université Grenoble Alpes. Inventaire de la signalisation aux traversées de tramway sur le campus : panneaux Attention Tram, panneaux C20C et bandes d\'éveil.',
+    'modal-arcgis-done-label': 'Ce qui a été fait',
+    'modal-arcgis-done': 'Conception d\'un formulaire de collecte terrain sur ArcGIS Survey123 avec géolocalisation GPS, photos et état des équipements. Les données sont stockées dans ArcGIS Online et traitées via champs calculés (Arcade/SQL) pour estimer les coûts de remise en état. Livraison d\'un Dashboard ArcGIS avec KPIs et cartes interactives, et d\'une StoryMap de restitution pour le client.',
+    'modal-lego-title': 'Catalogue Lego – API Rebrickable',
+    'modal-lego-intro': 'Collecte automatisée de données LEGO via l\'API REST Rebrickable et génération d\'un catalogue HTML interactif. Architecture modulaire en 3 fichiers Python : configuration, couche API, interface utilisateur.',
+    'modal-lego-caption': 'Interface console : l\'utilisateur choisit un thème ou un set parmi une liste prédéfinie — ici sélection du Bugatti Chiron, qui génère automatiquement la page HTML correspondante',
+    'modal-lego-done-label': 'Ce qui a été fait',
+    'modal-lego-done': 'Requêtes HTTP authentifiées vers les endpoints /lego/themes et /lego/sets, gestion de la pagination, parsing JSON, génération de pages HTML avec CSS flexbox pour un rendu catalogue e-commerce. L\'utilisateur peut filtrer par thème (15 disponibles) et par année, chaque carte redirigeant vers la fiche Rebrickable du set.',
+    'modal-dares-title': 'Étude statistique – Syndicalisation DARES',
+    'modal-dares-intro': 'Analyse statistique d\'un jeu de données issu de la DARES (Direction de l\'Animation de la Recherche, des Études et des Statistiques) portant sur la syndicalisation dans le secteur médico-social.',
+    'modal-dares-done-label': 'Ce qui a été fait',
+    'modal-dares-done': 'Nettoyage et recodage des variables sous RStudio, statistiques descriptives univariées et bivariées, visualisations commentées (histogrammes, boxplots, tableaux croisés). Restitution des résultats sous Tableau et présentation orale devant un jury',
+    // Experiences
+    'exp-label':          'Expériences',
+    'exp-title':          'Parcours professionnel',
+    'exp-utile-period':   'Jan – Avr 2026',
+    'exp-utile-duration': '3 mois',
+    'exp-utile-role':     'Employé de rayon',
+    'exp-utile-desc':     'Utile, La Terrasse – Mise en rayon, contact client, travail en autonomie.',
+    'exp-acou-period':    'Juin 2025',
+    'exp-acou-duration':  '2 semaines',
+    'exp-acou-role':      'Manutentionnaire',
+    'exp-acou-desc':      'Acousteam, Lumbin – Conception et assemblage de bâches acoustiques. Rigueur, esprit d\'équipe, attention au détail.',
+    'exp-ehpad-period':   '2022 – 2023',
+    'exp-ehpad-duration': '6 mois',
+    'exp-ehpad-role':     'Bénévole',
+    'exp-ehpad-desc':     'EHPAD Les Ombrages, La Tronche – Visites régulières de résidents. Écoute, accompagnement, patience.',
+    // Contact
+    'contact-label':  'Contact',
+    'contact-title':  'Travaillons ensemble<br>dans le futur',
+    'contact-desc':   'Actuellement en stage à l\'international jusqu\'à juin 2026,<br>en alternance à Grenoble de septembre 2026 à août 2027.',
+    // Footer
+    'footer-school':  'IUT2 Grenoble · BUT Science des Données',
+  },
+  en: {
+    // Nav
+    'nav-about':        'About',
+    'nav-skills':       'Skills',
+    'nav-projects':     'Projects',
+    'nav-contact':      'Contact',
+    // Hero
+    'hero-tag':         'Data & Business Intelligence',
+    'hero-desc':        'Data Science student at IUT2 Grenoble. I build data pipelines and decision-making tools with method and precision.',
+    'hero-btn-projects':'View my projects',
+    'hero-btn-contact': 'Get in touch →',
+    'hero-avail':       'Internship · April – June 2026 &nbsp;·&nbsp; Apprenticeship · Sept. 2026 – Aug. 2027',
+    // About
+    'about-label':      'About',
+    'about-title':      'Making sense<br>of data',
+    'about-p1':         'I\'m aiming for a career in <strong>data engineering</strong> and want to grow in an international environment. In April 2026, I took part in <strong>BIP Prague</strong> (VŠE): a week of English-language work focused on data-driven decision making alongside Slovenian students in the Czech Republic.',
+    'about-p2':         'I\'m currently interning at <strong>SEVEN</strong> (Casablanca, Morocco), where I\'m helping build an end-to-end data pipeline — from ingestion to KPI dashboards — on a modern stack: dbt, Apache Spark, Power BI.',
+    'about-p3':         'Enthusiastic and communicative, I enjoy building data pipelines just as much as presenting findings to an audience. Passionate about skiing, weightlifting, and travelling.',
+    'stat-age':         'Date of birth',
+    'stat-tools':       'Tools mastered',
+    'stat-english':     'Professional English',
+    'stat-languages':   'Languages spoken',
+    // Skills
+    'skills-label':     'Skills',
+    'skills-title':     'Stack & expertise',
+    'sk-data':          'Data & BI Tools',
+    'sk-langs':         'Programming languages',
+    'sk-spoken':        'Languages',
+    'sk-rgpd':          'Governance & GDPR',
+    'lang-fr':          'French',
+    'lang-en':          'English',
+    'lang-it':          'Italian',
+    'lang-fr-level':    'Native',
+    'lang-en-level':    'B2 – Professional',
+    'lang-it-level':    'B1',
+    'rgpd-note':        '14 hours of coursework including a session led by a specialist lawyer',
+    // Projects
+    'projects-label':   'Projects',
+    'projects-title':   'My work',
+    // Project cards
+    'pcard-powerbi-title': 'HR Dashboards',
+    'pcard-powerbi-desc':  'Multi-page interactive dashboards: headcount, geographic breakdown, age pyramid, payroll. Data modelling and DAX measures.',
+    'pcard-knime-title':   'ETL Decision Chain',
+    'pcard-knime-desc':    'Integration of heterogeneous data sources (CSV, Excel, XML) into a MySQL data warehouse. Star schema architecture, automated cleaning and transformation.',
+    'pcard-walmart-title': 'Walmart Sales Analysis',
+    'pcard-walmart-desc':  'PHP/MySQL mini-site analysing weekly sales. Star schema, dynamic queries, seasonal colour-coded visualisations and KPIs.',
+    'pcard-prague-title':  'BIP Prague – Data-Driven Decision Making',
+    'pcard-prague-desc':   'International collaboration at the Prague University of Economics. Data-driven business simulation in English with European students.',
+    'pcard-shiny-title':   'Interactive R Shiny App',
+    'pcard-shiny-desc':    'Analysis of a 4,000-respondent survey on AI tool usage at UGA. Segmentation into 4 profiles via MCA and HCA, delivered as an interactive application.',
+    'pcard-arcgis-title':  'UGA Signage Inventory',
+    'pcard-arcgis-desc':   'Field inventory of tram crossings on the UGA campus. ArcGIS Dashboard and StoryMap delivered to a real client (DGD PAT).',
+    'pcard-lego-title':    'Lego Catalogue',
+    'pcard-lego-desc':     'Automated data extraction via the Rebrickable API and generation of a filterable interactive HTML catalogue by theme and year.',
+    'pcard-dares-title':   'DARES Statistical Study',
+    'pcard-dares-desc':    'Statistical analysis of trade union membership in the healthcare sector. Data cleaning, RStudio and Tableau visualisations, oral presentation.',
+    // Modals
+    'modal-powerbi-title': 'HR Dashboards',
+    'modal-powerbi-intro': 'Design of a multi-page Power BI report based on a fictional HR dataset from an international company. The goal was to let management analyse headcount, salaries, age pyramid, and geographic distribution through interactive visuals.',
+    'modal-powerbi-done-label': 'What was built',
+    'modal-powerbi-done': 'Star schema data modelling, DAX measures (average salary, payroll, deviation from average), 5 themed pages with button navigation, cross-filters and performance indicators. The "Employee vs Average" page lets management compare each employee against the benchmarks for their seniority bracket.',
+    'modal-knime-title': 'ETL Decision Chain',
+    'modal-knime-intro': 'Full ETL pipeline built in KNIME to integrate school transport data from three heterogeneous sources (CSV, Excel, XML) into a MySQL data warehouse. Star schema with a ROUTE fact table and three dimensions: Route, Bus, Date.',
+    'modal-knime-done-label': 'What was built',
+    'modal-knime-done': 'XML processing via XPath, identifier normalisation (BUS_01 → 1, LIGNE_09 → 9), type standardisation, merging of three distinct flows, distance calculation, and loading into MySQL. The star schema includes a Date dimension broken down into year, month, week, and day. 15/20 for the group presentation, 19.75/20 on the written exam (top of the class).',
+    'modal-walmart-title': 'Walmart Sales Analysis',
+    'modal-walmart-intro': 'Web mini-site analysing weekly sales from 45 Walmart stores across the US (2010–2012), built in PHP/MySQL with dynamic Chart.js visualisations. Data is fetched asynchronously from the MySQL database.',
+    'modal-walmart-done-label': 'What was built',
+    'modal-walmart-done': 'Star schema modelling (sales_facts, store_dim, time_dim), import of 6,435 rows, dynamic SQL queries with filters, Indicators page (top 10 stores, sales by season), Analysis page (store/year/season filters), and Charts page (sales by month, region, holiday vs normal weeks).',
+    'modal-prague-title': 'BIP Prague – Data-Driven Decision Making',
+    'modal-prague-intro': 'Intensive hybrid programme at the Prague University of Economics (VŠE) in April 2026. A week of English-language work with Slovenian students centred on decision-making in a fictional business context.',
+    'modal-prague-sim-label': 'AdGame – The Simulation',
+    'modal-prague-sim': 'An 11-round simulation on AdGame: each team had to create dishes to sell and launch targeted advertising campaigns by Prague neighbourhood and media type (bus stops, street furniture, large-format billboards, vehicle wraps, street marketing…). After each round, data on top-performing products (features, price, selling team) was available to refine strategy.',
+    'modal-prague-journey-label': 'Our journey',
+    'modal-prague-journey': 'Our team finished 4th out of 5. But from round 8 onwards, after a difficult start, we overtook team 5 by more than 50% of their turnover — even though we had started last, trailing them by 20%. By analysing the data available each round (top products, features, teams), we repositioned our strategy. A late wake-up call, but a powerful demonstration of data\'s role in decision-making.',
+    'modal-shiny-title': 'Interactive R Shiny App – AI Tools at UGA',
+    'modal-shiny-intro': 'Analysis of a survey conducted at Grenoble Alpes University with 3,092 students on their study habits and use of generative AI tools. Two analytical themes: work organisation and AI tool usage.',
+    'modal-shiny-done-label': 'What was built',
+    'modal-shiny-done': 'Full R pipeline: data cleaning, MCA analysis, hierarchical clustering (Ward\'s method), profile interpretation via catdes. Results delivered through a Shiny app with filters, interactive charts, and multi-page navigation.',
+    'modal-arcgis-title': 'UGA Signage Inventory',
+    'modal-arcgis-intro': 'Project carried out for a real client — the DGD PAT department at Grenoble Alpes University. Inventory of signage at tram crossings on campus: Tram Warning signs, C20C signs, and tactile paving strips.',
+    'modal-arcgis-done-label': 'What was built',
+    'modal-arcgis-done': 'Design of a field data collection form on ArcGIS Survey123 with GPS geolocation, photos, and equipment condition logging. Data is stored in ArcGIS Online and processed via calculated fields (Arcade/SQL) to estimate refurbishment costs. Delivery of an ArcGIS Dashboard with KPIs and interactive maps, plus a StoryMap for the client presentation.',
+    'modal-lego-title': 'Lego Catalogue – Rebrickable API',
+    'modal-lego-intro': 'Automated LEGO data collection via the Rebrickable REST API and generation of an interactive HTML catalogue. Modular architecture across 3 Python files: configuration, API layer, user interface.',
+    'modal-lego-caption': 'Console interface: the user picks a theme or set from a predefined list — here the Bugatti Chiron is selected, automatically generating the corresponding HTML page.',
+    'modal-lego-done-label': 'What was built',
+    'modal-lego-done': 'Authenticated HTTP requests to /lego/themes and /lego/sets endpoints, pagination handling, JSON parsing, and HTML page generation with CSS Flexbox for an e-commerce catalogue feel. Users can filter by theme (15 available) and by year, with each card linking to the set\'s Rebrickable page.',
+    'modal-dares-title': 'Statistical Study – DARES Trade Union Data',
+    'modal-dares-intro': 'Statistical analysis of a dataset from DARES (the French Directorate for Research, Studies and Statistics) on trade union membership in the healthcare and social sector.',
+    'modal-dares-done-label': 'What was built',
+    'modal-dares-done': 'Variable cleaning and recoding in RStudio, univariate and bivariate descriptive statistics, annotated visualisations (histograms, boxplots, cross-tabulations). Results presented in Tableau and delivered as an oral presentation before a jury.',
+    // Experiences
+    'exp-label':          'Experience',
+    'exp-title':          'Professional background',
+    'exp-utile-period':   'Jan – Apr 2026',
+    'exp-utile-duration': '3 months',
+    'exp-utile-role':     'Retail Assistant',
+    'exp-utile-desc':     'Utile, La Terrasse – Stocking shelves, customer service, independent work.',
+    'exp-acou-period':    'June 2025',
+    'exp-acou-duration':  '2 weeks',
+    'exp-acou-role':      'Warehouse Operative',
+    'exp-acou-desc':      'Acousteam, Lumbin – Design and assembly of acoustic panels. Precision, teamwork, attention to detail.',
+    'exp-ehpad-period':   '2022 – 2023',
+    'exp-ehpad-duration': '6 months',
+    'exp-ehpad-role':     'Volunteer',
+    'exp-ehpad-desc':     'EHPAD Les Ombrages, La Tronche – Regular visits to residents. Listening, support, patience.',
+    // Contact
+    'contact-label':  'Contact',
+    'contact-title':  'Let\'s work together<br>in the future',
+    'contact-desc':   'Currently on an international internship until June 2026,<br>then apprenticeship in Grenoble from September 2026 to August 2027.',
+    // Footer
+    'footer-school':  'IUT2 Grenoble · Data Science Degree',
+  }
+};
+
+// ─── DOM mapping ─────────────────────────────────────────────────────────────
+// Each entry: [selector, attribute, key]  (attribute null = innerHTML)
+function buildMap() {
+  return [
+    // Nav links
+    ['[data-i18n="nav-about"]',    null, 'nav-about'],
+    ['[data-i18n="nav-skills"]',   null, 'nav-skills'],
+    ['[data-i18n="nav-projects"]', null, 'nav-projects'],
+    ['[data-i18n="nav-contact"]',  null, 'nav-contact'],
+    // Hero
+    ['[data-i18n="hero-tag"]',         null, 'hero-tag'],
+    ['[data-i18n="hero-desc"]',        null, 'hero-desc'],
+    ['[data-i18n="hero-btn-projects"]',null, 'hero-btn-projects'],
+    ['[data-i18n="hero-btn-contact"]', null, 'hero-btn-contact'],
+    ['[data-i18n="hero-avail"]',       null, 'hero-avail'],
+    // About
+    ['[data-i18n="about-label"]', null, 'about-label'],
+    ['[data-i18n="about-title"]', null, 'about-title'],
+    ['[data-i18n="about-p1"]',    null, 'about-p1'],
+    ['[data-i18n="about-p2"]',    null, 'about-p2'],
+    ['[data-i18n="about-p3"]',    null, 'about-p3'],
+    ['[data-i18n="stat-age"]',       null, 'stat-age'],
+    ['[data-i18n="stat-tools"]',     null, 'stat-tools'],
+    ['[data-i18n="stat-english"]',   null, 'stat-english'],
+    ['[data-i18n="stat-languages"]', null, 'stat-languages'],
+    // Skills
+    ['[data-i18n="skills-label"]', null, 'skills-label'],
+    ['[data-i18n="skills-title"]', null, 'skills-title'],
+    ['[data-i18n="sk-data"]',      null, 'sk-data'],
+    ['[data-i18n="sk-langs"]',     null, 'sk-langs'],
+    ['[data-i18n="sk-spoken"]',    null, 'sk-spoken'],
+    ['[data-i18n="sk-rgpd"]',      null, 'sk-rgpd'],
+    ['[data-i18n="lang-fr"]',      null, 'lang-fr'],
+    ['[data-i18n="lang-en"]',      null, 'lang-en'],
+    ['[data-i18n="lang-it"]',      null, 'lang-it'],
+    ['[data-i18n="lang-fr-level"]',null, 'lang-fr-level'],
+    ['[data-i18n="lang-en-level"]',null, 'lang-en-level'],
+    ['[data-i18n="lang-it-level"]',null, 'lang-it-level'],
+    ['[data-i18n="rgpd-note"]',    null, 'rgpd-note'],
+    // Projects
+    ['[data-i18n="projects-label"]', null, 'projects-label'],
+    ['[data-i18n="projects-title"]', null, 'projects-title'],
+    ['[data-i18n="pcard-powerbi-title"]', null, 'pcard-powerbi-title'],
+    ['[data-i18n="pcard-powerbi-desc"]',  null, 'pcard-powerbi-desc'],
+    ['[data-i18n="pcard-knime-title"]',   null, 'pcard-knime-title'],
+    ['[data-i18n="pcard-knime-desc"]',    null, 'pcard-knime-desc'],
+    ['[data-i18n="pcard-walmart-title"]', null, 'pcard-walmart-title'],
+    ['[data-i18n="pcard-walmart-desc"]',  null, 'pcard-walmart-desc'],
+    ['[data-i18n="pcard-prague-title"]',  null, 'pcard-prague-title'],
+    ['[data-i18n="pcard-prague-desc"]',   null, 'pcard-prague-desc'],
+    ['[data-i18n="pcard-shiny-title"]',   null, 'pcard-shiny-title'],
+    ['[data-i18n="pcard-shiny-desc"]',    null, 'pcard-shiny-desc'],
+    ['[data-i18n="pcard-arcgis-title"]',  null, 'pcard-arcgis-title'],
+    ['[data-i18n="pcard-arcgis-desc"]',   null, 'pcard-arcgis-desc'],
+    ['[data-i18n="pcard-lego-title"]',    null, 'pcard-lego-title'],
+    ['[data-i18n="pcard-lego-desc"]',     null, 'pcard-lego-desc'],
+    ['[data-i18n="pcard-dares-title"]',   null, 'pcard-dares-title'],
+    ['[data-i18n="pcard-dares-desc"]',    null, 'pcard-dares-desc'],
+    // Modals
+    ['[data-i18n="modal-powerbi-title"]',      null, 'modal-powerbi-title'],
+    ['[data-i18n="modal-powerbi-intro"]',      null, 'modal-powerbi-intro'],
+    ['[data-i18n="modal-powerbi-done-label"]', null, 'modal-powerbi-done-label'],
+    ['[data-i18n="modal-powerbi-done"]',       null, 'modal-powerbi-done'],
+    ['[data-i18n="modal-knime-title"]',        null, 'modal-knime-title'],
+    ['[data-i18n="modal-knime-intro"]',        null, 'modal-knime-intro'],
+    ['[data-i18n="modal-knime-done-label"]',   null, 'modal-knime-done-label'],
+    ['[data-i18n="modal-knime-done"]',         null, 'modal-knime-done'],
+    ['[data-i18n="modal-walmart-title"]',      null, 'modal-walmart-title'],
+    ['[data-i18n="modal-walmart-intro"]',      null, 'modal-walmart-intro'],
+    ['[data-i18n="modal-walmart-done-label"]', null, 'modal-walmart-done-label'],
+    ['[data-i18n="modal-walmart-done"]',       null, 'modal-walmart-done'],
+    ['[data-i18n="modal-prague-title"]',        null, 'modal-prague-title'],
+    ['[data-i18n="modal-prague-intro"]',        null, 'modal-prague-intro'],
+    ['[data-i18n="modal-prague-sim-label"]',    null, 'modal-prague-sim-label'],
+    ['[data-i18n="modal-prague-sim"]',          null, 'modal-prague-sim'],
+    ['[data-i18n="modal-prague-journey-label"]',null, 'modal-prague-journey-label'],
+    ['[data-i18n="modal-prague-journey"]',      null, 'modal-prague-journey'],
+    ['[data-i18n="modal-shiny-title"]',        null, 'modal-shiny-title'],
+    ['[data-i18n="modal-shiny-intro"]',        null, 'modal-shiny-intro'],
+    ['[data-i18n="modal-shiny-done-label"]',   null, 'modal-shiny-done-label'],
+    ['[data-i18n="modal-shiny-done"]',         null, 'modal-shiny-done'],
+    ['[data-i18n="modal-arcgis-title"]',       null, 'modal-arcgis-title'],
+    ['[data-i18n="modal-arcgis-intro"]',       null, 'modal-arcgis-intro'],
+    ['[data-i18n="modal-arcgis-done-label"]',  null, 'modal-arcgis-done-label'],
+    ['[data-i18n="modal-arcgis-done"]',        null, 'modal-arcgis-done'],
+    ['[data-i18n="modal-lego-title"]',         null, 'modal-lego-title'],
+    ['[data-i18n="modal-lego-intro"]',         null, 'modal-lego-intro'],
+    ['[data-i18n="modal-lego-caption"]',       null, 'modal-lego-caption'],
+    ['[data-i18n="modal-lego-done-label"]',    null, 'modal-lego-done-label'],
+    ['[data-i18n="modal-lego-done"]',          null, 'modal-lego-done'],
+    ['[data-i18n="modal-dares-title"]',        null, 'modal-dares-title'],
+    ['[data-i18n="modal-dares-intro"]',        null, 'modal-dares-intro'],
+    ['[data-i18n="modal-dares-done-label"]',   null, 'modal-dares-done-label'],
+    ['[data-i18n="modal-dares-done"]',         null, 'modal-dares-done'],
+    // Experiences
+    ['[data-i18n="exp-label"]',          null, 'exp-label'],
+    ['[data-i18n="exp-title"]',          null, 'exp-title'],
+    ['[data-i18n="exp-utile-period"]',   null, 'exp-utile-period'],
+    ['[data-i18n="exp-utile-duration"]', null, 'exp-utile-duration'],
+    ['[data-i18n="exp-utile-role"]',     null, 'exp-utile-role'],
+    ['[data-i18n="exp-utile-desc"]',     null, 'exp-utile-desc'],
+    ['[data-i18n="exp-acou-period"]',    null, 'exp-acou-period'],
+    ['[data-i18n="exp-acou-duration"]',  null, 'exp-acou-duration'],
+    ['[data-i18n="exp-acou-role"]',      null, 'exp-acou-role'],
+    ['[data-i18n="exp-acou-desc"]',      null, 'exp-acou-desc'],
+    ['[data-i18n="exp-ehpad-period"]',   null, 'exp-ehpad-period'],
+    ['[data-i18n="exp-ehpad-duration"]', null, 'exp-ehpad-duration'],
+    ['[data-i18n="exp-ehpad-role"]',     null, 'exp-ehpad-role'],
+    ['[data-i18n="exp-ehpad-desc"]',     null, 'exp-ehpad-desc'],
+    // Contact
+    ['[data-i18n="contact-label"]', null, 'contact-label'],
+    ['[data-i18n="contact-title"]', null, 'contact-title'],
+    ['[data-i18n="contact-desc"]',  null, 'contact-desc'],
+    // Footer
+    ['[data-i18n="footer-school"]', null, 'footer-school'],
+  ];
+}
+
+let currentLang = 'fr';
+
+function applyLang(lang) {
+  const t = translations[lang];
+  buildMap().forEach(([selector, attr, key]) => {
+    document.querySelectorAll(selector).forEach(el => {
+      if (t[key] !== undefined) {
+        if (attr) el.setAttribute(attr, t[key]);
+        else el.innerHTML = t[key];
+      }
+    });
+  });
+  document.documentElement.lang = lang;
+}
+
+function toggleLang() {
+  currentLang = currentLang === 'fr' ? 'en' : 'fr';
+  const btn  = document.getElementById('lang-btn');
+  const flag = document.getElementById('lang-flag');
+  const lbl  = document.getElementById('lang-label');
+  if (currentLang === 'en') {
+    flag.textContent = '🇫🇷';
+    lbl.textContent  = 'FR';
+    btn.title = 'Passer en français';
+  } else {
+    flag.textContent = '🇬🇧';
+    lbl.textContent  = 'EN';
+    btn.title = 'Switch to English';
+  }
+  applyLang(currentLang);
+}
 </script>
 </body>
 </html>
