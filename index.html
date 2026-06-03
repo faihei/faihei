@@ -197,11 +197,23 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.2rem;
+      padding: 1.4rem 1rem;
       border-right: 1px solid var(--border);
     }
     .stage-logo-cell:last-child { border-right: none; }
-    .stage-logo-cell img { width: 100%; max-width: 120px; height: 60px; object-fit: contain; }
+    /* Base : logos libres dans leur cellule */
+    .stage-logo-cell img {
+      display: block;
+      max-width: 80%;
+      max-height: 90px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+    /* SEVEN paysage (598×417) → bride la hauteur */
+    .stage-logo-cell.logo-wide img { max-height: 70px; max-width: 85%; }
+    /* EQDOM portrait (264×370) → bride la largeur */
+    .stage-logo-cell.logo-tall img { max-height: 110px; max-width: 55%; }
 
     .stage-tech-strip {
       border-top: 1px solid var(--border);
@@ -408,11 +420,11 @@
       <div class="stage-visual">
         <div class="stage-logo-row">
           <!-- Logo SEVEN -->
-          <div class="stage-logo-cell">
+          <div class="stage-logo-cell logo-wide">
             <img src="seven_logo.png" alt="SEVEN">
           </div>
           <!-- Logo EQDOM -->
-          <div class="stage-logo-cell">
+          <div class="stage-logo-cell logo-tall">
             <img src="eqdom_logo.png" alt="EQDOM">
           </div>
           <!-- Photo terrain ou screenshot -->
