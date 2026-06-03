@@ -604,7 +604,7 @@
       <div class="pcard-img" style="height:240px"><img src="metro_nyc_cover.jpg" alt="Métro NYC"></div>
       <div class="pcard-body">
         <div class="ptags"><span class="ptag">R</span><span class="ptag">Séries temporelles</span><span class="ptag">Holt-Winters</span></div>
-        <h3 class="ptitle" data-i18n="pcard-dares-title">Prévision – Métro de New York</h3>
+        <h3 class="ptitle" data-i18n="pcard-dares-title">Prévision de données temporelles</h3>
         <p class="pdesc" data-i18n="pcard-dares-desc">Analyse et prévision de la fréquentation quotidienne du métro new-yorkais sur 35 jours. Décomposition additive, coefficients saisonniers, comparaison de trois modèles de lissage exponentiel.</p>
       </div>
     </div>
@@ -801,7 +801,7 @@
     <button class="modal-close" onclick="document.getElementById('modal-dares').classList.remove('open')">✕</button>
     <div class="modal-header">
       <div class="ptags"><span class="ptag">R</span><span class="ptag">Séries temporelles</span><span class="ptag">Holt-Winters</span><span class="ptag">Décomposition additive</span></div>
-      <h2 data-i18n="modal-dares-title">Prévision de la fréquentation – Métro de New York</h2>
+      <h2 data-i18n="modal-dares-title">Prévision de la fréquentation du Métro de New York</h2>
       <p data-i18n="modal-dares-intro">Analyse d'une série chronologique de 35 jours (8 sept. – 12 oct. 2025) sur la fréquentation quotidienne du métro new-yorkais (MTA), issue des données ouvertes de l'État de New York. Objectif : modéliser la saisonnalité hebdomadaire et prévoir la fréquentation de la semaine suivante.</p>
     </div>
 
@@ -854,7 +854,7 @@
       <div class="pcard-body">
         <div class="ptags"><span class="ptag" data-i18n="exp-utile-period">Jan – Avr 2026</span><span class="ptag" data-i18n="exp-utile-duration">3 mois</span></div>
         <h3 class="ptitle" data-i18n="exp-utile-role">Employé de rayon</h3>
-        <p class="pdesc" data-i18n="exp-utile-desc">Utile, La Terrasse – Mise en rayon, contact client, travail en autonomie.</p>
+        <p class="pdesc" data-i18n="exp-utile-desc">Utile, La Terrasse – Mise en rayon, contact client, travail en autonomie. Contrat étudiant de 13h.</p>
       </div>
     </div>
     <div class="pcard fade">
@@ -990,7 +990,7 @@ const translations = {
     'pcard-arcgis-desc':   'Inventaire terrain des traversées de tramway sur le campus UGA. Dashboard et StoryMap ArcGIS livrés à un client réel (DGD PAT).',
     'pcard-lego-title':    'Catalogue Lego',
     'pcard-lego-desc':     'Extraction automatisée via l\'API Rebrickable et génération d\'un catalogue HTML interactif filtrable par thème et année.',
-    'pcard-dares-title':   'Prévision – Métro de New York',
+    'pcard-dares-title':   'Prévision de données temporelles',
     'pcard-dares-desc':    'Analyse et prévision de la fréquentation quotidienne du métro new-yorkais sur 35 jours. Décomposition additive, coefficients saisonniers, comparaison de trois modèles de lissage exponentiel.',
     // Modals
     'modal-powerbi-title': 'Tableaux de bord RH',
@@ -1024,7 +1024,7 @@ const translations = {
     'modal-lego-caption': 'Interface console : l\'utilisateur choisit un thème ou un set parmi une liste prédéfinie — ici sélection du Bugatti Chiron, qui génère automatiquement la page HTML correspondante',
     'modal-lego-done-label': 'Ce qui a été fait',
     'modal-lego-done': 'Requêtes HTTP authentifiées vers les endpoints /lego/themes et /lego/sets, gestion de la pagination, parsing JSON, génération de pages HTML avec CSS flexbox pour un rendu catalogue e-commerce. L\'utilisateur peut filtrer par thème (15 disponibles) et par année, chaque carte redirigeant vers la fiche Rebrickable du set.',
-    'modal-dares-title':        'Prévision de la fréquentation – Métro de New York',
+    'modal-dares-title':        'Prévision de la fréquentation du Métro de New York',
     'modal-dares-intro':        'Analyse d\'une série chronologique de 35 jours (8 sept. – 12 oct. 2025) sur la fréquentation quotidienne du métro new-yorkais (MTA). Objectif : modéliser la saisonnalité hebdomadaire et prévoir la fréquentation de la semaine suivante.',
     'modal-dares-context-label':'Contexte & données',
     'modal-dares-context':      'Données issues du portail data.ny.gov. Saisonnalité hebdomadaire très marquée (p=7) : pic mercredi-jeudi (~4,5 M passagers), chute nette le week-end (~2 M le dimanche). L\'amplitude quasi constante justifie un modèle additif.',
@@ -1136,9 +1136,9 @@ const translations = {
     'pcard-shiny-desc':    'Analysis of a 4,000-respondent survey on AI tool usage at UGA. Segmentation into 4 profiles via MCA and HCA, delivered as an interactive application.',
     'pcard-arcgis-title':  'UGA Signage Inventory',
     'pcard-arcgis-desc':   'Field inventory of tram crossings on the UGA campus. ArcGIS Dashboard and StoryMap delivered to a real client (DGD PAT).',
-    'pcard-lego-title':    'Lego Catalogue',
+    'pcard-lego-title':    'Lego Catalogue'
     'pcard-lego-desc':     'Automated data extraction via the Rebrickable API and generation of a filterable interactive HTML catalogue by theme and year.',
-    'pcard-dares-title':   'Forecasting – New York City Subway',
+    'pcard-dares-title':   'Forecasting New York City Subway Ridership',
     'pcard-dares-desc':    'Analysis and forecasting of daily NYC subway ridership over 35 days. Additive decomposition, seasonal coefficients, comparison of three exponential smoothing models.',
     // Modals
     'modal-powerbi-title': 'HR Dashboards',
@@ -1172,7 +1172,7 @@ const translations = {
     'modal-lego-caption': 'Console interface: the user picks a theme or set from a predefined list — here the Bugatti Chiron is selected, automatically generating the corresponding HTML page.',
     'modal-lego-done-label': 'What was built',
     'modal-lego-done': 'Authenticated HTTP requests to /lego/themes and /lego/sets endpoints, pagination handling, JSON parsing, and HTML page generation with CSS Flexbox for an e-commerce catalogue feel. Users can filter by theme (15 available) and by year, with each card linking to the set\'s Rebrickable page.',
-    'modal-dares-title':        'Ridership Forecasting – New York City Subway',
+    'modal-dares-title':        'Forecasting New York City Subway Ridership',
     'modal-dares-intro':        'Analysis of a 35-day time series (8 Sept – 12 Oct 2025) on daily NYC subway ridership (MTA), sourced from New York State open data. Goal: model weekly seasonality and forecast ridership for the following week.',
     'modal-dares-context-label':'Context & data',
     'modal-dares-context':      'Data from data.ny.gov. Strong weekly seasonality (p=7): peak Wed–Thu (~4.5M passengers), sharp drop at weekends (~2M on Sundays). Near-constant amplitude across weeks justifies an additive model.',
@@ -1188,7 +1188,7 @@ const translations = {
     'exp-utile-period':   'Jan – Apr 2026',
     'exp-utile-duration': '3 months',
     'exp-utile-role':     'Retail Assistant',
-    'exp-utile-desc':     'Utile, La Terrasse – Stocking shelves, customer service, independent work.',
+    'exp-utile-desc':     'Utile, La Terrasse – Stocking shelves, customer service, independent work. 13h/w student job',
     'exp-acou-period':    'June 2025',
     'exp-acou-duration':  '2 weeks',
     'exp-acou-role':      'Warehouse Operative',
