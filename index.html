@@ -601,11 +601,11 @@
     </div>
 
     <div class="pcard fade" onclick="document.getElementById('modal-dares').classList.add('open')">
-      <div class="pcard-img" style="height:240px"><img src="RF-DARES_RVB.png" alt="DARES"></div>
+      <div class="pcard-img" style="height:240px"><img src="metro_nyc_cover.jpg" alt="Métro NYC"></div>
       <div class="pcard-body">
-        <div class="ptags"><span class="ptag">R</span><span class="ptag">Tableau</span><span class="ptag">Statistiques</span></div>
-        <h3 class="ptitle" data-i18n="pcard-dares-title">Étude statistique DARES</h3>
-        <p class="pdesc" data-i18n="pcard-dares-desc">Analyse statistique de la syndicalisation dans le secteur médico-social. Nettoyage, visualisations RStudio et Tableau, présentation orale des résultats.</p>
+        <div class="ptags"><span class="ptag">R</span><span class="ptag">Séries temporelles</span><span class="ptag">Holt-Winters</span></div>
+        <h3 class="ptitle" data-i18n="pcard-dares-title">Prévision – Métro de New York</h3>
+        <p class="pdesc" data-i18n="pcard-dares-desc">Analyse et prévision de la fréquentation quotidienne du métro new-yorkais sur 35 jours. Décomposition additive, coefficients saisonniers, comparaison de trois modèles de lissage exponentiel.</p>
       </div>
     </div>
 
@@ -800,16 +800,45 @@
   <div class="modal-box">
     <button class="modal-close" onclick="document.getElementById('modal-dares').classList.remove('open')">✕</button>
     <div class="modal-header">
-      <div class="ptags"><span class="ptag">R</span><span class="ptag">Tableau</span><span class="ptag">Statistiques</span></div>
-      <h2 data-i18n="modal-dares-title">Étude statistique – Syndicalisation DARES</h2>
-      <p data-i18n="modal-dares-intro">Analyse statistique d'un jeu de données issu de la DARES (Direction de l'Animation de la Recherche, des Études et des Statistiques) portant sur la syndicalisation dans le secteur médico-social.</p>
+      <div class="ptags"><span class="ptag">R</span><span class="ptag">Séries temporelles</span><span class="ptag">Holt-Winters</span><span class="ptag">Décomposition additive</span></div>
+      <h2 data-i18n="modal-dares-title">Prévision de la fréquentation – Métro de New York</h2>
+      <p data-i18n="modal-dares-intro">Analyse d'une série chronologique de 35 jours (8 sept. – 12 oct. 2025) sur la fréquentation quotidienne du métro new-yorkais (MTA), issue des données ouvertes de l'État de New York. Objectif : modéliser la saisonnalité hebdomadaire et prévoir la fréquentation de la semaine suivante.</p>
     </div>
+
+    <!-- Image de couverture -->
     <div class="modal-imgs cols1">
-      <img src="RF-DARES_RVB.png" alt="DARES">
+      <img src="metro_nyc_cover.jpg" alt="Métro New York">
     </div>
+
     <div class="modal-section">
-      <h4 data-i18n="modal-dares-done-label">Ce qui a été fait</h4>
-      <p data-i18n="modal-dares-done">Nettoyage et recodage des variables sous RStudio, statistiques descriptives univariées et bivariées, visualisations commentées (histogrammes, boxplots, tableaux croisés). Restitution des résultats sous Tableau et présentation orale devant un jury</p>
+      <h4 data-i18n="modal-dares-context-label">Contexte & données</h4>
+      <p data-i18n="modal-dares-context">Le jeu de données brut provient du portail officiel data.ny.gov. Il couvre 35 jours consécutifs, avec une saisonnalité hebdomadaire très marquée (p=7) : fréquentation élevée et stable en semaine (pic mercredi-jeudi autour de 4,5 M passagers), chute nette le week-end (dimanche ~2 M). L'amplitude quasi constante d'une semaine à l'autre justifie le choix d'un modèle additif plutôt que multiplicatif.</p>
+    </div>
+
+    <div class="modal-section">
+      <h4 data-i18n="modal-dares-decomp-label">Décomposition de la série</h4>
+      <p data-i18n="modal-dares-decomp">La tendance est estimée par <strong>moyenne mobile d'ordre 7 (MM7)</strong>, qui révèle une évolution de fond globalement stable avec une légère baisse progressive. Les <strong>coefficients saisonniers</strong> sont calculés par la méthode de la médiane : les jours ouvrés affichent des écarts positifs à la tendance (jusqu'à +651 000 le jeudi), tandis que le samedi (–914 000) et le dimanche (–1 506 000) s'en écartent fortement. La <strong>série CVS</strong> (corrigée des variations saisonnières), définie par y_t – Ŝ_t, est régulière et oscille autour de 3,7–3,9 M — confirmant que les coefficients ont été correctement estimés.</p>
+    </div>
+
+    <!-- Graphique série brute + MM7 -->
+    <div class="modal-imgs cols1">
+      <img src="metro_mm7.png" alt="Série + tendance MM7">
+      <img src="metro_cvs.png" alt="Série brute, tendance et CVS">
+    </div>
+
+    <div class="modal-section">
+      <h4 data-i18n="modal-dares-model-label">Modèle paramétrique & validation</h4>
+      <p data-i18n="modal-dares-model">Une <strong>régression linéaire sur la série CVS</strong> confirme une pente légèrement négative : une fois la saisonnalité retirée, la fréquentation décroît faiblement au fil du temps. Le <strong>corrélogramme des résidus</strong> ne présente aucun pic régulier et toutes les autocorrélations restent dans les bandes de confiance — le modèle de décomposition est bien adapté.</p>
+    </div>
+
+    <div class="modal-section">
+      <h4 data-i18n="modal-dares-done-label">Comparaison des modèles de prévision</h4>
+      <p data-i18n="modal-dares-done">Trois méthodes de lissage exponentiel ont été comparées. Le <strong>lissage simple</strong> (MSE = 0,701) est trop rudimentaire : il ne capte ni tendance ni saisonnalité. La <strong>méthode de Holt</strong> (MSE = 0,658) intègre la tendance mais ignore le cycle hebdomadaire. La <strong>méthode de Holt-Winters additive</strong> (MSE = 0,030) est la plus performante : elle reproduit fidèlement les variations semaine / week-end et fournit des prévisions cohérentes — ~4,1 M en semaine, ~2,5 M le samedi, ~2,1 M le dimanche. Le seul écart notable (–25 % le lundi de la semaine 6) s'explique par un jour férié américain, événement exceptionnel non modélisable a priori.</p>
+    </div>
+
+    <!-- Graphique Holt-Winters -->
+    <div class="modal-imgs cols1">
+      <img src="metro_holtwinters.png" alt="Prévisions Holt-Winters">
     </div>
   </div>
 </div>
@@ -961,8 +990,8 @@ const translations = {
     'pcard-arcgis-desc':   'Inventaire terrain des traversées de tramway sur le campus UGA. Dashboard et StoryMap ArcGIS livrés à un client réel (DGD PAT).',
     'pcard-lego-title':    'Catalogue Lego',
     'pcard-lego-desc':     'Extraction automatisée via l\'API Rebrickable et génération d\'un catalogue HTML interactif filtrable par thème et année.',
-    'pcard-dares-title':   'Étude statistique DARES',
-    'pcard-dares-desc':    'Analyse statistique de la syndicalisation dans le secteur médico-social. Nettoyage, visualisations RStudio et Tableau, présentation orale des résultats.',
+    'pcard-dares-title':   'Prévision – Métro de New York',
+    'pcard-dares-desc':    'Analyse et prévision de la fréquentation quotidienne du métro new-yorkais sur 35 jours. Décomposition additive, coefficients saisonniers, comparaison de trois modèles de lissage exponentiel.',
     // Modals
     'modal-powerbi-title': 'Tableaux de bord RH',
     'modal-powerbi-intro': 'Conception d\'un rapport Power BI multi-pages sur un jeu de données RH fictif d\'une entreprise internationale. L\'objectif était de permettre à la direction d\'analyser les effectifs, les salaires, la pyramide des âges et la répartition géographique via des visualisations interactives.',
@@ -995,10 +1024,16 @@ const translations = {
     'modal-lego-caption': 'Interface console : l\'utilisateur choisit un thème ou un set parmi une liste prédéfinie — ici sélection du Bugatti Chiron, qui génère automatiquement la page HTML correspondante',
     'modal-lego-done-label': 'Ce qui a été fait',
     'modal-lego-done': 'Requêtes HTTP authentifiées vers les endpoints /lego/themes et /lego/sets, gestion de la pagination, parsing JSON, génération de pages HTML avec CSS flexbox pour un rendu catalogue e-commerce. L\'utilisateur peut filtrer par thème (15 disponibles) et par année, chaque carte redirigeant vers la fiche Rebrickable du set.',
-    'modal-dares-title': 'Étude statistique – Syndicalisation DARES',
-    'modal-dares-intro': 'Analyse statistique d\'un jeu de données issu de la DARES (Direction de l\'Animation de la Recherche, des Études et des Statistiques) portant sur la syndicalisation dans le secteur médico-social.',
-    'modal-dares-done-label': 'Ce qui a été fait',
-    'modal-dares-done': 'Nettoyage et recodage des variables sous RStudio, statistiques descriptives univariées et bivariées, visualisations commentées (histogrammes, boxplots, tableaux croisés). Restitution des résultats sous Tableau et présentation orale devant un jury',
+    'modal-dares-title':        'Prévision de la fréquentation – Métro de New York',
+    'modal-dares-intro':        'Analyse d\'une série chronologique de 35 jours (8 sept. – 12 oct. 2025) sur la fréquentation quotidienne du métro new-yorkais (MTA). Objectif : modéliser la saisonnalité hebdomadaire et prévoir la fréquentation de la semaine suivante.',
+    'modal-dares-context-label':'Contexte & données',
+    'modal-dares-context':      'Données issues du portail data.ny.gov. Saisonnalité hebdomadaire très marquée (p=7) : pic mercredi-jeudi (~4,5 M passagers), chute nette le week-end (~2 M le dimanche). L\'amplitude quasi constante justifie un modèle additif.',
+    'modal-dares-decomp-label': 'Décomposition de la série',
+    'modal-dares-decomp':       'Tendance estimée par moyenne mobile d\'ordre 7 (MM7). Coefficients saisonniers calculés par la médiane : jusqu\'à +651 000 le jeudi, –914 000 le samedi, –1 506 000 le dimanche. La série CVS est régulière et stable autour de 3,7–3,9 M, confirmant la bonne estimation des coefficients.',
+    'modal-dares-model-label':  'Modèle paramétrique & validation',
+    'modal-dares-model':        'Régression linéaire sur la série CVS : pente légèrement négative. Corrélogramme des résidus sans pic régulier, toutes les autocorrélations dans les bandes de confiance — modèle bien adapté.',
+    'modal-dares-done-label':   'Comparaison des modèles de prévision',
+    'modal-dares-done':         'Lissage simple (MSE 0,701) : trop rudimentaire, ignore tendance et saisonnalité. Holt (MSE 0,658) : capture la tendance mais pas le cycle hebdomadaire. Holt-Winters additif (MSE 0,030) : le plus performant — reproduit les variations semaine/week-end, prévisions à ~4,1 M en semaine et ~2,1 M le dimanche. Écart de –25 % le lundi semaine 6 dû à un jour férié américain.',
     // Experiences
     'exp-label':          'Expériences',
     'exp-title':          'Parcours professionnel',
@@ -1103,8 +1138,8 @@ const translations = {
     'pcard-arcgis-desc':   'Field inventory of tram crossings on the UGA campus. ArcGIS Dashboard and StoryMap delivered to a real client (DGD PAT).',
     'pcard-lego-title':    'Lego Catalogue',
     'pcard-lego-desc':     'Automated data extraction via the Rebrickable API and generation of a filterable interactive HTML catalogue by theme and year.',
-    'pcard-dares-title':   'DARES Statistical Study',
-    'pcard-dares-desc':    'Statistical analysis of trade union membership in the healthcare sector. Data cleaning, RStudio and Tableau visualisations, oral presentation.',
+    'pcard-dares-title':   'Forecasting – New York City Subway',
+    'pcard-dares-desc':    'Analysis and forecasting of daily NYC subway ridership over 35 days. Additive decomposition, seasonal coefficients, comparison of three exponential smoothing models.',
     // Modals
     'modal-powerbi-title': 'HR Dashboards',
     'modal-powerbi-intro': 'Design of a multi-page Power BI report based on a fictional HR dataset from an international company. The goal was to let management analyse headcount, salaries, age pyramid, and geographic distribution through interactive visuals.',
@@ -1137,10 +1172,16 @@ const translations = {
     'modal-lego-caption': 'Console interface: the user picks a theme or set from a predefined list — here the Bugatti Chiron is selected, automatically generating the corresponding HTML page.',
     'modal-lego-done-label': 'What was built',
     'modal-lego-done': 'Authenticated HTTP requests to /lego/themes and /lego/sets endpoints, pagination handling, JSON parsing, and HTML page generation with CSS Flexbox for an e-commerce catalogue feel. Users can filter by theme (15 available) and by year, with each card linking to the set\'s Rebrickable page.',
-    'modal-dares-title': 'Statistical Study – DARES Trade Union Data',
-    'modal-dares-intro': 'Statistical analysis of a dataset from DARES (the French Directorate for Research, Studies and Statistics) on trade union membership in the healthcare and social sector.',
-    'modal-dares-done-label': 'What was built',
-    'modal-dares-done': 'Variable cleaning and recoding in RStudio, univariate and bivariate descriptive statistics, annotated visualisations (histograms, boxplots, cross-tabulations). Results presented in Tableau and delivered as an oral presentation before a jury.',
+    'modal-dares-title':        'Ridership Forecasting – New York City Subway',
+    'modal-dares-intro':        'Analysis of a 35-day time series (8 Sept – 12 Oct 2025) on daily NYC subway ridership (MTA), sourced from New York State open data. Goal: model weekly seasonality and forecast ridership for the following week.',
+    'modal-dares-context-label':'Context & data',
+    'modal-dares-context':      'Data from data.ny.gov. Strong weekly seasonality (p=7): peak Wed–Thu (~4.5M passengers), sharp drop at weekends (~2M on Sundays). Near-constant amplitude across weeks justifies an additive model.',
+    'modal-dares-decomp-label': 'Series decomposition',
+    'modal-dares-decomp':       'Trend estimated via order-7 moving average (MA7). Seasonal coefficients calculated by median: up to +651,000 on Thursday, –914,000 on Saturday, –1,506,000 on Sunday. The seasonally adjusted series (SA) is stable around 3.7–3.9M, confirming well-estimated coefficients.',
+    'modal-dares-model-label':  'Parametric model & validation',
+    'modal-dares-model':        'Linear regression on the SA series shows a slightly negative slope. The residual correlogram has no regular spikes and all autocorrelations stay within confidence bands — the model fits well.',
+    'modal-dares-done-label':   'Model comparison',
+    'modal-dares-done':         'Simple smoothing (MSE 0.701): too basic, misses trend and seasonality. Holt (MSE 0.658): captures trend but not the weekly cycle. Additive Holt-Winters (MSE 0.030): best performer — accurately reproduces weekday/weekend swings, forecasting ~4.1M on weekdays and ~2.1M on Sundays. The –25% gap on Monday of week 6 is due to a US public holiday.',
     // Experiences
     'exp-label':          'Experience',
     'exp-title':          'Professional background',
@@ -1286,6 +1327,12 @@ function buildMap() {
     ['[data-i18n="modal-lego-done"]',          null, 'modal-lego-done'],
     ['[data-i18n="modal-dares-title"]',        null, 'modal-dares-title'],
     ['[data-i18n="modal-dares-intro"]',        null, 'modal-dares-intro'],
+    ['[data-i18n="modal-dares-context-label"]',null, 'modal-dares-context-label'],
+    ['[data-i18n="modal-dares-context"]',      null, 'modal-dares-context'],
+    ['[data-i18n="modal-dares-decomp-label"]', null, 'modal-dares-decomp-label'],
+    ['[data-i18n="modal-dares-decomp"]',       null, 'modal-dares-decomp'],
+    ['[data-i18n="modal-dares-model-label"]',  null, 'modal-dares-model-label'],
+    ['[data-i18n="modal-dares-model"]',        null, 'modal-dares-model'],
     ['[data-i18n="modal-dares-done-label"]',   null, 'modal-dares-done-label'],
     ['[data-i18n="modal-dares-done"]',         null, 'modal-dares-done'],
     // Experiences
