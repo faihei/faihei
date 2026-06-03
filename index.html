@@ -200,46 +200,28 @@
       padding: 1.6rem 1.2rem;
     }
     /* SEVEN paysage (598×417) */
-    .stage-logo-cell.logo-wide img { max-height: 80px; max-width: 90%; width: auto; height: auto; object-fit: contain; display: block; }
+    .stage-logo-cell.logo-wide img { max-height: 100px; max-width: 92%; width: auto; height: auto; object-fit: contain; display: block; }
     /* EQDOM portrait (264×370) */
-    .stage-logo-cell.logo-tall img { max-height: 120px; max-width: 60%; width: auto; height: auto; object-fit: contain; display: block; }
-
-    /* Bandeau International */
-    .stage-intl-banner {
-      background: var(--accent);
-      color: #fff;
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      padding: 0.45rem 1rem;
-      text-align: center;
-    }
+    .stage-logo-cell.logo-tall img { max-height: 140px; max-width: 65%; width: auto; height: auto; object-fit: contain; display: block; }
 
     /* Layout logos (colonne) + photo (droite) */
     .stage-logos-col {
       display: flex;
       flex-direction: column;
       border-right: 1px solid var(--border);
-      flex: 0 0 55%;
+      flex: 0 0 50%;
     }
 
-    /* Photo à sa taille naturelle, centrée, déborde pas */
+    /* Photo à droite : couvre toute la cellule */
     .stage-photo-cell {
       flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       overflow: hidden;
-      padding: 0.8rem;
     }
     .stage-photo-cell img {
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
+      width: 100%;
+      height: 100%;
       display: block;
-      object-fit: contain;
+      object-fit: cover;
     }
 
     .stage-tech-strip {
@@ -445,11 +427,8 @@
 
       <!-- Colonne gauche : visuels -->
       <div class="stage-visual">
-        <!-- Bandeau International -->
-        <div class="stage-intl-banner" data-i18n="stage-intl-banner">International · Casablanca, Maroc</div>
-
         <div class="stage-logo-row">
-          <!-- Logos à gauche -->
+          <!-- Logos à gauche empilés -->
           <div class="stage-logos-col">
             <div class="stage-logo-cell logo-wide">
               <img src="seven_logo.png" alt="SEVEN">
@@ -482,6 +461,7 @@
             <span class="ptag" data-i18n="stage-period">Avr – Juin 2026</span>
             <span class="ptag" data-i18n="stage-duration">8 semaines</span>
             <span class="ptag" data-i18n="stage-location">Casablanca, Maroc</span>
+            <span class="ptag" data-i18n="stage-intl">International</span>
           </div>
           <h3 class="ptitle" style="font-size:1.18rem;" data-i18n="stage-title">Data Quality & KPIs – Stage chez SEVEN / EQDOM</h3>
           <p style="font-size:0.8rem; color:var(--muted);" data-i18n="stage-subtitle">Data lakehouse 100 % on-premise · Architecture médaillon Bronze / Silver / Gold</p>
@@ -914,6 +894,7 @@ const translations = {
     'stage-period':     'Avr – Juin 2026',
     'stage-duration':   '8 semaines',
     'stage-location':   'Casablanca, Maroc',
+    'stage-intl':       'International',
     'stage-intl-banner':'International · Casablanca, Maroc',
     'stage-title':      'Data Quality & KPIs – Stage chez SEVEN / EQDOM',
     'stage-subtitle':   'Data lakehouse 100 % on-premise · Architecture médaillon Bronze / Silver / Gold',
@@ -1056,7 +1037,7 @@ const translations = {
     'stage-period':     'Apr – Jun 2026',
     'stage-duration':   '8 weeks',
     'stage-location':   'Casablanca, Morocco',
-    'stage-intl-banner':'International · Casablanca, Morocco',
+    'stage-intl':       'International',
     'stage-title':      'Data Quality & KPIs – Internship at SEVEN / EQDOM',
     'stage-subtitle':   '100% on-premise data lakehouse · Medallion architecture Bronze / Silver / Gold',
     'stage-m1':         'Writing <strong>SQL quality control queries</strong> on client, contract and payment data in Dremio.',
@@ -1203,6 +1184,7 @@ function buildMap() {
     ['[data-i18n="stage-period"]',   null, 'stage-period'],
     ['[data-i18n="stage-duration"]', null, 'stage-duration'],
     ['[data-i18n="stage-location"]', null, 'stage-location'],
+    ['[data-i18n="stage-intl"]',     null, 'stage-intl'],
     ['[data-i18n="stage-intl-banner"]', null, 'stage-intl-banner'],
     ['[data-i18n="stage-title"]',    null, 'stage-title'],
     ['[data-i18n="stage-subtitle"]', null, 'stage-subtitle'],
