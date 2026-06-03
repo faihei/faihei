@@ -199,20 +199,15 @@
       justify-content: center;
       padding: 1.6rem 1.2rem;
     }
-    /* SEVEN paysage (598×417) */
-    .stage-logo-cell.logo-wide img { max-height: 100px; max-width: 92%; width: auto; height: auto; object-fit: contain; display: block; }
-    /* EQDOM portrait (264×370) */
-    .stage-logo-cell.logo-tall img { max-height: 140px; max-width: 65%; width: auto; height: auto; object-fit: contain; display: block; }
-
-    /* Layout logos (colonne) + photo (droite) */
+    /* Layout : photo à gauche, logos empilés à droite */
     .stage-logos-col {
       display: flex;
       flex-direction: column;
-      border-right: 1px solid var(--border);
-      flex: 0 0 50%;
+      flex: 0 0 45%;
+      border-left: 1px solid var(--border);
     }
 
-    /* Photo à droite : couvre toute la cellule */
+    /* Photo à gauche, couvre toute la cellule */
     .stage-photo-cell {
       flex: 1;
       overflow: hidden;
@@ -222,6 +217,34 @@
       height: 100%;
       display: block;
       object-fit: cover;
+    }
+
+    /* Fond blanc + logo au max dans sa case */
+    .stage-logo-cell {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 0.8rem;
+      background: #ffffff;
+    }
+    /* SEVEN paysage (598×417) */
+    .stage-logo-cell.logo-wide img {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    /* EQDOM portrait (264×370) */
+    .stage-logo-cell.logo-tall img {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
     }
 
     .stage-tech-strip {
@@ -428,7 +451,11 @@
       <!-- Colonne gauche : visuels -->
       <div class="stage-visual">
         <div class="stage-logo-row">
-          <!-- Logos à gauche empilés -->
+          <!-- Photo à gauche -->
+          <div class="stage-photo-cell">
+            <img src="stage_photo.jpg" alt="Stage Casablanca">
+          </div>
+          <!-- Logos empilés à droite -->
           <div class="stage-logos-col">
             <div class="stage-logo-cell logo-wide">
               <img src="seven_logo.png" alt="SEVEN">
@@ -436,10 +463,6 @@
             <div class="stage-logo-cell logo-tall" style="border-top: 1px solid var(--border);">
               <img src="eqdom_logo.png" alt="EQDOM">
             </div>
-          </div>
-          <!-- Photo à droite, taille naturelle -->
-          <div class="stage-photo-cell">
-            <img src="stage_photo.jpg" alt="Stage Casablanca">
           </div>
         </div>
 
