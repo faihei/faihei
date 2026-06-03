@@ -197,23 +197,50 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.4rem 1rem;
-      border-right: 1px solid var(--border);
+      padding: 1.6rem 1.2rem;
     }
-    .stage-logo-cell:last-child { border-right: none; }
-    /* Base : logos libres dans leur cellule */
-    .stage-logo-cell img {
-      display: block;
-      max-width: 80%;
-      max-height: 90px;
+    /* SEVEN paysage (598×417) */
+    .stage-logo-cell.logo-wide img { max-height: 80px; max-width: 90%; width: auto; height: auto; object-fit: contain; display: block; }
+    /* EQDOM portrait (264×370) */
+    .stage-logo-cell.logo-tall img { max-height: 120px; max-width: 60%; width: auto; height: auto; object-fit: contain; display: block; }
+
+    /* Bandeau International */
+    .stage-intl-banner {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.45rem 1rem;
+      text-align: center;
+    }
+
+    /* Layout logos (colonne) + photo (droite) */
+    .stage-logos-col {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+      flex: 0 0 55%;
+    }
+
+    /* Photo à sa taille naturelle, centrée, déborde pas */
+    .stage-photo-cell {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 0.8rem;
+    }
+    .stage-photo-cell img {
+      max-width: 100%;
+      max-height: 100%;
       width: auto;
       height: auto;
+      display: block;
       object-fit: contain;
     }
-    /* SEVEN paysage (598×417) → bride la hauteur */
-    .stage-logo-cell.logo-wide img { max-height: 70px; max-width: 85%; }
-    /* EQDOM portrait (264×370) → bride la largeur */
-    .stage-logo-cell.logo-tall img { max-height: 110px; max-width: 55%; }
 
     .stage-tech-strip {
       border-top: 1px solid var(--border);
@@ -418,20 +445,25 @@
 
       <!-- Colonne gauche : visuels -->
       <div class="stage-visual">
+        <!-- Bandeau International -->
+        <div class="stage-intl-banner" data-i18n="stage-intl-banner">International · Casablanca, Maroc</div>
+
         <div class="stage-logo-row">
-          <!-- Logo SEVEN -->
-          <div class="stage-logo-cell logo-wide">
-            <img src="seven_logo.png" alt="SEVEN">
+          <!-- Logos à gauche -->
+          <div class="stage-logos-col">
+            <div class="stage-logo-cell logo-wide">
+              <img src="seven_logo.png" alt="SEVEN">
+            </div>
+            <div class="stage-logo-cell logo-tall" style="border-top: 1px solid var(--border);">
+              <img src="eqdom_logo.png" alt="EQDOM">
+            </div>
           </div>
-          <!-- Logo EQDOM -->
-          <div class="stage-logo-cell logo-tall">
-            <img src="eqdom_logo.png" alt="EQDOM">
-          </div>
-          <!-- Photo terrain ou screenshot -->
-          <div class="stage-logo-cell" style="padding:0; overflow:hidden;">
-            <img src="stage_photo.jpg" alt="Stage Casablanca" style="width:100%; height:100%; max-width:none; object-fit:cover;">
+          <!-- Photo à droite, taille naturelle -->
+          <div class="stage-photo-cell">
+            <img src="stage_photo.jpg" alt="Stage Casablanca">
           </div>
         </div>
+
         <div class="stage-tech-strip">
           <span class="stage-tech-chip">MinIO</span>
           <span class="stage-tech-chip">Apache NiFi</span>
@@ -486,10 +518,6 @@
           <div class="stage-kpi">
             <div class="stage-kpi-n">E2E</div>
             <div class="stage-kpi-l" data-i18n="stage-kpi3">Pipeline<br>complet</div>
-          </div>
-          <div class="stage-kpi">
-            <div class="stage-kpi-n">🇲🇦</div>
-            <div class="stage-kpi-l" data-i18n="stage-kpi4">International</div>
           </div>
         </div>
       </div>
@@ -886,6 +914,7 @@ const translations = {
     'stage-period':     'Avr – Juin 2026',
     'stage-duration':   '8 semaines',
     'stage-location':   'Casablanca, Maroc',
+    'stage-intl-banner':'International · Casablanca, Maroc',
     'stage-title':      'Data Quality & KPIs – Stage chez SEVEN / EQDOM',
     'stage-subtitle':   'Data lakehouse 100 % on-premise · Architecture médaillon Bronze / Silver / Gold',
     'stage-m1':         'Rédaction des <strong>requêtes SQL de contrôle qualité</strong> sur les données clients, contrats et paiements dans Dremio.',
@@ -1027,6 +1056,7 @@ const translations = {
     'stage-period':     'Apr – Jun 2026',
     'stage-duration':   '8 weeks',
     'stage-location':   'Casablanca, Morocco',
+    'stage-intl-banner':'International · Casablanca, Morocco',
     'stage-title':      'Data Quality & KPIs – Internship at SEVEN / EQDOM',
     'stage-subtitle':   '100% on-premise data lakehouse · Medallion architecture Bronze / Silver / Gold',
     'stage-m1':         'Writing <strong>SQL quality control queries</strong> on client, contract and payment data in Dremio.',
@@ -1173,6 +1203,7 @@ function buildMap() {
     ['[data-i18n="stage-period"]',   null, 'stage-period'],
     ['[data-i18n="stage-duration"]', null, 'stage-duration'],
     ['[data-i18n="stage-location"]', null, 'stage-location'],
+    ['[data-i18n="stage-intl-banner"]', null, 'stage-intl-banner'],
     ['[data-i18n="stage-title"]',    null, 'stage-title'],
     ['[data-i18n="stage-subtitle"]', null, 'stage-subtitle'],
     ['[data-i18n="stage-m1"]',  null, 'stage-m1'],
