@@ -487,15 +487,15 @@
             </div>
             <div class="stage-mission-item">
               <svg class="stage-mission-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7C5 4 4 5 4 7z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6M12 9v6"/></svg>
-              <span data-i18n="stage-m2">Industrialisation des contrôles via des <strong>flags dbt</strong> (macros Jinja) sur la couche Silver.</span>
+              <span data-i18n="stage-m2">Industrialisation des contrôles via des <strong>flags dbt</strong> à l'aide de macros Jinja.</span>
             </div>
             <div class="stage-mission-item">
               <svg class="stage-mission-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-              <span data-i18n="stage-m3">Construction des <strong>KPIs Gold</strong> agrégés (taux de complétude, doublons, anomalies) et exposition via Dremio.</span>
+              <span data-i18n="stage-m3">Construction des <strong>KPIs</strong> taux de complétude, doublons, anomalies et exposition via Dremio.</span>
             </div>
             <div class="stage-mission-item">
               <svg class="stage-mission-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/></svg>
-              <span data-i18n="stage-m4">Contribution à la <strong>conception du dashboard Power BI</strong> de suivi de la fiabilité des données pour les équipes métier.</span>
+              <span data-i18n="stage-m4">Contribution à la <strong>conception des dashboards Power BI</strong> de la vision globale et des profils clients pour les équipes métier.</span>
             </div>
           </div>
 
@@ -635,7 +635,7 @@
     </div>
     <div class="modal-section">
       <h4 data-i18n="modal-seven-pipeline-label">Pipeline construit (5 étapes)</h4>
-      <p data-i18n="modal-seven-pipeline"><strong>1. Spécification :</strong> lecture du catalogue des règles métier (CIN, ICE, email, RIB, cohérence dates…) et échanges avec les équipes DOSIT pour clarifier les règles non documentées. <strong>2. Contrôles SQL dans Dremio :</strong> écriture des requêtes de complétude, format et unicité sur les données Bronze — résultats consignés dans un fichier de recettes Excel. <strong>3. Flags dbt (Silver) :</strong> industrialisation de chaque règle via des macros Jinja réutilisables générant des flags yes/no par enregistrement, sans toucher aux données brutes. <strong>4. KPIs Gold :</strong> modèles dbt agrégeant les flags en taux de complétude, taux d'anomalies de format, taux de doublons — matérialisés en tables Iceberg exposées via Dremio. <strong>5. Dashboard Power BI :</strong> collaboration avec l'équipe BI pour la conception des visualisations à destination de la DOSIT et des équipes métier.</p>
+      <p data-i18n="modal-seven-pipeline"><strong>1. Spécification :</strong> lecture du catalogue des règles métier (CIN, ICE, email, RIB, cohérence dates…) et échanges avec les équipes DOSIT pour clarifier les règles non documentées. <strong>2. Contrôles SQL dans Dremio :</strong> écriture des requêtes de complétude, format et unicité sur les données Bronze — résultats consignés dans un fichier de recettes Excel. <strong>3. Flags dbt (Silver) :</strong> industrialisation de chaque règle via des macros Jinja réutilisables générant des flags yes/no par enregistrement, sans toucher aux données brutes. <strong>4. KPIs :</strong> modèles dbt agrégeant les flags en taux de complétude, taux d'anomalies de format, taux de doublons — matérialisés en tables Iceberg exposées via Dremio. <strong>5. Dashboard Power BI :</strong> collaboration avec l'équipe BI pour la conception des visualisations à destination de la DOSIT et des équipes métier.</p>
     </div>
     <div class="modal-section">
       <h4 data-i18n="modal-seven-scope-label">Périmètre des données contrôlées</h4>
@@ -643,7 +643,7 @@
     </div>
     <div class="modal-section">
       <h4 data-i18n="modal-seven-stack-label">Stack technique</h4>
-      <p data-i18n="modal-seven-stack"><strong>Ingestion :</strong> Apache NiFi (lecture Informix/SmartStream/One → Parquet dans MinIO). <strong>Stockage :</strong> MinIO (S3 on-premise) + Apache Iceberg (schéma versionné, transactions ACID, time travel). <strong>Transformation :</strong> Apache Spark (Bronze → Silver) + dbt (Silver → Gold, macros Jinja, graphe de dépendances ref()). <strong>Catalogue :</strong> Apache Hive. <strong>Requêtage :</strong> Dremio (Reflections, cache pré-calculé). <strong>Orchestration :</strong> Apache Airflow (8 DAGs en production). <strong>Visualisation :</strong> Power BI via connexion SQL directe à Dremio.</p>
+      <p data-i18n="modal-seven-stack"><strong>Ingestion :</strong> Apache NiFi (lecture Informix/SmartStream/One → Parquet dans MinIO). <strong>Stockage :</strong> MinIO (S3 on-premise) + Apache Iceberg (schéma versionné, transactions ACID, time travel). <strong>Transformation :</strong> Apache Spark + dbt (macros Jinja, graphe de dépendances ref()). <strong>Catalogue :</strong> Apache Hive. <strong>Requêtage :</strong> Dremio (Reflections, cache pré-calculé). <strong>Orchestration :</strong> Apache Airflow (8 DAGs en production). <strong>Visualisation :</strong> Power BI via connexion SQL directe à Dremio.</p>
     </div>
   </div>
 </div>
@@ -1107,9 +1107,9 @@ const translations = {
     'stage-title':      'Data Quality & KPIs – Internship at SEVEN / EQDOM',
     'stage-subtitle':   '100% on-premise data lakehouse · Medallion architecture Bronze / Silver / Gold',
     'stage-m1':         'Writing <strong>SQL quality control queries</strong> on client, contract and payment data in Dremio.',
-    'stage-m2':         'Industrialising controls through <strong>dbt flags</strong> (Jinja macros) on the Silver layer.',
-    'stage-m3':         'Building aggregated <strong>Gold KPIs</strong> (completeness rates, duplicates, anomalies) and exposing them via Dremio.',
-    'stage-m4':         'Contributing to the <strong>Power BI dashboard design</strong> for data reliability monitoring, used by business teams.',
+    'stage-m2':         'Industrialising controls through <strong>dbt flags</strong> by using Jinja macros.',
+    'stage-m3':         'Building <strong>KPIs</strong> (completeness rates, duplicates, anomalies) and exposing them via Dremio.',
+    'stage-m4':         'Contributing to the <strong>Power BI dashboards design</strong> for customer view and global performance, used by business teams.',
     'stage-kpi1':       'Domains<br>covered',
     'stage-kpi2':       'Tools<br>discovered',
     'stage-kpi3':       'End-to-end<br>pipeline',
@@ -1120,11 +1120,11 @@ const translations = {
     'modal-seven-context-label':  'Context & challenges',
     'modal-seven-context':        'Credit data (clients, contracts, payments) contained critical anomalies — duplicates, invalid formats, business inconsistencies — that could jeopardise the migration to XLoan if left uncorrected. My mission: build an end-to-end anomaly detection and measurement system, industrialised on EQDOM\'s data platform.',
     'modal-seven-pipeline-label': 'Pipeline built (5 steps)',
-    'modal-seven-pipeline':       '<strong>1. Specification:</strong> reading the business rules catalogue and working with DOSIT teams to clarify undocumented rules. <strong>2. SQL controls in Dremio:</strong> writing completeness, format and uniqueness queries against Bronze data — results logged in an Excel recipe file. <strong>3. dbt flags (Silver):</strong> industrialising each rule via reusable Jinja macros generating yes/no flags per record, without touching the source data. <strong>4. Gold KPIs:</strong> dbt models aggregating flags into completeness rates, anomaly rates and duplicate rates — exposed via Dremio. <strong>5. Power BI dashboard:</strong> collaboration with the BI team to design visualisations for DOSIT and business teams.',
+    'modal-seven-pipeline':       '<strong>1. Specification:</strong> reading the business rules catalogue and working with DOSIT teams to clarify undocumented rules. <strong>2. SQL controls in Dremio:</strong> writing completeness, format and uniqueness queries against Bronze data — results logged in an Excel recipe file. <strong>3. dbt flags (Silver):</strong> industrialising each rule via reusable Jinja macros generating yes/no flags per record, without touching the source data. <strong>4. KPIs:</strong> dbt models aggregating flags into completeness rates, anomaly rates and duplicate rates — exposed via Dremio. <strong>5. Power BI dashboard:</strong> collaboration with the BI team to design visualisations for DOSIT and business teams.',
     'modal-seven-scope-label':    'Data domains covered',
     'modal-seven-scope':          '<strong>Individual clients (PP):</strong> CIN (format, uniqueness), name/surname, 10-digit phone, email via regex, address, date of birth, age ≥ 18, blacklist status. <strong>Corporate clients (PM):</strong> 15-digit ICE, alphanumeric RC, tax ID, company name. <strong>Contracts:</strong> referential integrity, date consistency, positive amounts, 24-digit RIB, composite key duplicates. <strong>Payments:</strong> linked to a contract, positive amounts, dates within the contract period.',
     'modal-seven-stack-label':    'Technical stack',
-    'modal-seven-stack':          '<strong>Ingestion:</strong> Apache NiFi (Informix / SmartStream / One → Parquet in MinIO). <strong>Storage:</strong> MinIO (on-premise S3) + Apache Iceberg (ACID transactions, time travel). <strong>Transformation:</strong> Spark (Bronze → Silver) + dbt (Silver → Gold, Jinja macros). <strong>Catalogue:</strong> Apache Hive. <strong>Querying:</strong> Dremio (Reflections). <strong>Orchestration:</strong> Apache Airflow (8 DAGs). <strong>Visualisation:</strong> Power BI via direct SQL connection to Dremio.',
+    'modal-seven-stack':          '<strong>Ingestion:</strong> Apache NiFi (Informix / SmartStream / One → Parquet in MinIO). <strong>Storage:</strong> MinIO (on-premise S3) + Apache Iceberg (ACID transactions, time travel). <strong>Transformation:</strong> Spark + dbt (Jinja macros). <strong>Catalogue:</strong> Apache Hive. <strong>Querying:</strong> Dremio (Reflections). <strong>Orchestration:</strong> Apache Airflow (8 DAGs). <strong>Visualisation:</strong> Power BI via direct SQL connection to Dremio.',
     // Project cards
     'pcard-powerbi-title': 'HR Dashboards',
     'pcard-powerbi-desc':  'Multi-page interactive dashboards: headcount, geographic breakdown, age pyramid, payroll. Data modelling and DAX measures.',
